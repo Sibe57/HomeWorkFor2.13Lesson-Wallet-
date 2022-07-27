@@ -25,23 +25,9 @@
                                     <segue destination="gfZ-CJ-IPm" kind="show" id="iU2-XR-jba"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Phc-FU-PKO">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bp9-6b-nah"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="SKm-Bh-5aZ"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Phc-FU-PKO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6wP-WV-x7Y"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Phc-FU-PKO" secondAttribute="trailing" id="7hM-P7-dEU"/>
-                            <constraint firstItem="Phc-FU-PKO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L0E-k0-Any"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Phc-FU-PKO" secondAttribute="bottom" id="bUz-aJ-5z5"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title 1" largeTitleDisplayMode="always" id="93Q-qa-h1e"/>
                 </viewController>
