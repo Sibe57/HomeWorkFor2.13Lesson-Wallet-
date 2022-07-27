@@ -9,10 +9,16 @@ import UIKit
 
 class FundDetailsViewController: UITableViewController {
     
-    var funds = Fund.getFunds()
+    let typeOfFunds = TypeOfFunds.stock
+    
+    var funds: [Fund] {
+        Fund.getAllFunds(of: typeOfFunds)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = typeOfFunds.rawValue
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,25 +29,31 @@ class FundDetailsViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        funds.count
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        1
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         funds.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "fundElement", for: indexPath)
 
-        // Configure the cell...
-
+        cell.selectionStyle = .none
+        
+        var content = cell.defaultContentConfiguration()
+        
+        content.text = funds[indexPath.row].name
+        content.image = UIImage(systemName: funds[indexPath.row].image)
+        content.secondaryText = String(funds[indexPath.row].totalPrice)
+        
+        cell.contentConfiguration = content
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

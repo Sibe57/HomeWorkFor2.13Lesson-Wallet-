@@ -47,8 +47,10 @@ class Fund {
                     image: dataStore.images.shuffled().first ?? "trash",
                     name: name,
                     currency: dataStore.currency,
-                    price: Double.random(in: 0.1...100),
-                    quantity: Double(Int.random(in: 1...10))
+
+                    price: Double.random(in: 1...100),
+                    quantity: Double.random(in: 1...10)
+
                 )
             )
         }
@@ -110,7 +112,7 @@ class Cash: Fund {
 }
 
 
-//
+
 class cryptoCurrency: Fund {
     let ticker: String
     
@@ -133,6 +135,7 @@ class Eft: Fund {
                     currency: currency, price: price, quantity: quantity)
     }
 }
+
 
 class Metall: Fund {
     let typeOfMetall: TypeOfMetall

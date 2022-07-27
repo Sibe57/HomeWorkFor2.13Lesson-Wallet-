@@ -18,6 +18,7 @@
 		096047A72891345000DCB67F /* FundDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096047A62891345000DCB67F /* FundDetails.storyboard */; };
 		096047AA28913C5B00DCB67F /* FundDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047A928913C5B00DCB67F /* FundDetailsViewController.swift */; };
 		096047AC2891421C00DCB67F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047AB2891421C00DCB67F /* DataStore.swift */; };
+		096047AF2891650100DCB67F /* GetFundsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047AE2891650100DCB67F /* GetFundsExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		096047A62891345000DCB67F /* FundDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FundDetails.storyboard; sourceTree = "<group>"; };
 		096047A928913C5B00DCB67F /* FundDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailsViewController.swift; sourceTree = "<group>"; };
 		096047AB2891421C00DCB67F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		096047AE2891650100DCB67F /* GetFundsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFundsExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		023B619028911C92007D6BCD /* HomeWorkFor2.13Lesson(Wallet) */ = {
 			isa = PBXGroup;
 			children = (
+				096047AD289164DF00DCB67F /* Extensions */,
 				096047A828913C1800DCB67F /* ViewControllers */,
 				0295D2142891211300F31B38 /* Services */,
 				0295D2132891210E00F31B38 /* Views */,
@@ -144,6 +147,14 @@
 				096047A928913C5B00DCB67F /* FundDetailsViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		096047AD289164DF00DCB67F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				096047AE2891650100DCB67F /* GetFundsExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +236,7 @@
 				0295D2162891244F00F31B38 /* Fund.swift in Sources */,
 				023B619428911C92007D6BCD /* SceneDelegate.swift in Sources */,
 				0295D21828912B4200F31B38 /* Converter.swift in Sources */,
+				096047AF2891650100DCB67F /* GetFundsExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
