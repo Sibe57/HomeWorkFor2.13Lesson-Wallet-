@@ -47,7 +47,7 @@ class Fund {
                     image: dataStore.images.shuffled().first ?? "trash",
                     name: name,
                     currency: dataStore.currency,
-                    price: Double.random(in: 0.1...100),
+                    price: Double.random(in: 0...100),
                     quantity: Int.random(in: 1...10)
                 )
             )
@@ -125,7 +125,7 @@ class Stock: Fund {
 //    var price: Double
 //}
 
-enum TypeOfFunds {
+enum TypeOfFunds: String {
     case stock
     case bound
     case cash
