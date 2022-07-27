@@ -35,7 +35,7 @@ class Fund {
         return totalPrice / rateOfFunds * rateOfOutputCurrency
     }
     
-    func getFunds() -> [Fund] {
+    static func getFunds() -> [Fund] {
         let dataStore = DataStore()
         
         var funds = [Fund]()

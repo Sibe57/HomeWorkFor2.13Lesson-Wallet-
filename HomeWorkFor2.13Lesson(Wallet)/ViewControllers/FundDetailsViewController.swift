@@ -9,7 +9,7 @@ import UIKit
 
 class FundDetailsViewController: UITableViewController {
     
-    var funds: [Fund]!
+    var funds = Fund.getFunds()
 
     override func viewDidLoad() {
         super.viewDidLoad()
