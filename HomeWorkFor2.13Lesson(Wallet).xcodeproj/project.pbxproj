@@ -56,15 +56,71 @@
 		023B619028911C92007D6BCD /* HomeWorkFor2.13Lesson(Wallet) */ = {
 			isa = PBXGroup;
 			children = (
-				023B619128911C92007D6BCD /* AppDelegate.swift */,
-				023B619328911C92007D6BCD /* SceneDelegate.swift */,
-				023B619528911C92007D6BCD /* ViewController.swift */,
-				023B619728911C92007D6BCD /* Main.storyboard */,
-				023B619A28911C92007D6BCD /* Assets.xcassets */,
-				023B619C28911C92007D6BCD /* LaunchScreen.storyboard */,
-				023B619F28911C92007D6BCD /* Info.plist */,
+				0295D2142891211300F31B38 /* Services */,
+				0295D2132891210E00F31B38 /* Views */,
+				0295D212289120FD00F31B38 /* Model */,
+				0295D211289120D900F31B38 /* Storyboards */,
+				023B61A528911C9D007D6BCD /* App */,
+				0295D20F28911FE900F31B38 /* Controllers */,
+				0295D2102891208A00F31B38 /* Resources */,
 			);
 			path = "HomeWorkFor2.13Lesson(Wallet)";
+			sourceTree = "<group>";
+		};
+		023B61A528911C9D007D6BCD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				023B619128911C92007D6BCD /* AppDelegate.swift */,
+				023B619328911C92007D6BCD /* SceneDelegate.swift */,
+				023B619F28911C92007D6BCD /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0295D20F28911FE900F31B38 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				023B619528911C92007D6BCD /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0295D2102891208A00F31B38 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				023B619A28911C92007D6BCD /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0295D211289120D900F31B38 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				023B619728911C92007D6BCD /* Main.storyboard */,
+				023B619C28911C92007D6BCD /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0295D212289120FD00F31B38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0295D2132891210E00F31B38 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0295D2142891211300F31B38 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R82749YG66;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "HomeWorkFor2.13Lesson(Wallet)/Info.plist";
+				INFOPLIST_FILE = "HomeWorkFor2.13Lesson(Wallet)/App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R82749YG66;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "HomeWorkFor2.13Lesson(Wallet)/Info.plist";
+				INFOPLIST_FILE = "HomeWorkFor2.13Lesson(Wallet)/App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
