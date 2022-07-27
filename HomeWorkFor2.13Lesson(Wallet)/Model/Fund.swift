@@ -60,8 +60,8 @@ class Fund {
 
 
 class Stock: Fund {
-    var issuer: String
-    init(image: String, name: String,currency: Currency,
+    let issuer: String
+    init(image: String, name: String, currency: Currency,
          price: Double, quantity: Int, issuer: String) {
         self.issuer = issuer
         super.init(typeOfFunds: .stock, image: image, name: name,
@@ -71,15 +71,18 @@ class Stock: Fund {
 
 
 
-//struct Bound: Funds {
-//    var typeOffunds = TypeOfFunds.bound
-//    var image: String
-//    var name: String
-//    var currency: Currency
-//    var price: Double
-//    var issuer: String
-//    var yield: Double
-//}
+class Bound: Fund {
+    let issuer: String
+    let yield: Double
+    
+    init(image: String, name: String, currency: Currency,
+         price: Double, quantity: Int, issuer: String, yield: Double) {
+        self.issuer = issuer
+        self.yield = yield
+        super.init(typeOfFunds: .bound, image: image, name: name,
+                   currency: currency, price: price, quantity: quantity)
+    }
+}
 //
 //struct Cash: Funds {
 //    var typeOffunds = TypeOfFunds.cash
