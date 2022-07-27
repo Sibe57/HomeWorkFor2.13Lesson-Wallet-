@@ -13,13 +13,13 @@ class Fund {
     let name: String
     let currency: Currency
     var price: Double
-    var quantity: Int
+    var quantity: Double
     var totalPrice: Double {
-        Double(quantity) * price
+        quantity * price
     }
     
     init(typeOfFunds: TypeOfFunds, image: String, name: String,
-         currency: Currency, price: Double, quantity: Int) {
+         currency: Currency, price: Double, quantity: Double) {
         
         self.typeOfFunds = typeOfFunds
         self.image = image
@@ -48,7 +48,7 @@ class Fund {
                     name: name,
                     currency: dataStore.currency,
                     price: Double.random(in: 0.1...100),
-                    quantity: Int.random(in: 1...10)
+                    quantity: Double(Int.random(in: 1...10))
                 )
             )
         }
@@ -62,7 +62,7 @@ class Fund {
 class Stock: Fund {
     let issuer: String
     init(image: String, name: String, currency: Currency,
-         price: Double, quantity: Int, issuer: String) {
+         price: Double, quantity: Double, issuer: String) {
         self.issuer = issuer
         super.init(typeOfFunds: .stock, image: image, name: name,
                     currency: currency, price: price, quantity: quantity)
@@ -76,77 +76,94 @@ class Bound: Fund {
     let yield: Double
     
     init(image: String, name: String, currency: Currency,
-         price: Double, quantity: Int, issuer: String, yield: Double) {
+         price: Double, quantity: Double, issuer: String, yield: Double) {
         self.issuer = issuer
         self.yield = yield
         super.init(typeOfFunds: .bound, image: image, name: name,
                    currency: currency, price: price, quantity: quantity)
     }
 }
-//
-//struct Cash: Funds {
-//    var typeOffunds = TypeOfFunds.cash
-//    var image: String
-//    var name: String
-//    var currency: Currency
-//    var price: Double = 1.0
-//    var country: String
-//}
-//
-//struct cryptoCurrency: Funds {
-//    var typeOffunds = TypeOfFunds.cryptoCurrency
-//    var image: String
-//    var name: String
-//    var currency: Currency
-//    var price: Double
-//    var ticker: String
-//}
-//
-//struct Eft: Funds {
-//    var typeOffunds = TypeOfFunds.etf
-//    var image: String
-//    var name: String
-//    var currency: Currency
-//    var price: Double
-//}
-//
-//struct Metall: Funds {
-//    var typeOffunds = TypeOfFunds.metall
-//    var typeOfMetal: TypeOfMetall
-//    var image: String
-//    var name: String {
-//        switch typeOfMetal {
-//        case .gold:
-//            return "Золото"
-//        case .silver:
-//            return "Серебро"
-//        case .palladium:
-//            return "Палладий"
-//        }
-//    }
-//    var currency: Currency
-//    var price: Double
-//}
 
-enum TypeOfFunds {
-    case stock
-    case bound
-    case cash
-    case cryptoCurrency
-    case etf
-    case metall
+
+class Cash: Fund {
+    
+    var country: String {
+        switch currency {
+        case .usd:
+            return "США"
+        case .eur:
+            return "Евро Союз"
+        case .rur:
+            return "Российская Федерация"
+        case .cny:
+            return "Китай"
+        case .jpy:
+            return "Япония"
+        }
+    }
+    
+    init(image: String, currency: Currency,
+                  quantity: Double) {
+        super.init(typeOfFunds: .cash, image: image, name: currency.rawValue,
+                   currency: currency, price: 1, quantity: quantity)
+    }
 }
 
-enum Currency {
-    case usd
-    case eur
-    case rur
-    case cny
-    case jpy
+
+//
+class cryptoCurrency: Fund {
+    let ticker: String
+    
+    init(image: String, name: String,
+         price: Double, quantity: Double, ticker: String) {
+        self.ticker = ticker
+        super.init(typeOfFunds: .cryptoCurrency, image: image, name: name,
+                   currency: .usd, price: price, quantity: quantity)
+    }
 }
 
-enum TypeOfMetall {
-    case gold
-    case silver
-    case palladium
+
+class Eft: Fund {
+    let issuer: String
+    
+    init(image: String, name: String, currency: Currency,
+         price: Double, quantity: Double, issuer: String) {
+        self.issuer = issuer
+        super.init(typeOfFunds: .etf, image: image, name: name,
+                    currency: currency, price: price, quantity: quantity)
+    }
+}
+
+class Metall: Fund {
+    let typeOfMetall: TypeOfMetall
+    init(typeOfMetall: TypeOfMetall, image: String, price: Double, quantity: Double) {
+        self.typeOfMetall = typeOfMetall
+        super.init(typeOfFunds: .metall, image: image,
+                   name: typeOfMetall.rawValue, currency: .usd,
+                   price: price, quantity: quantity)
+    }
+}
+
+
+enum TypeOfFunds: String {
+    case stock = "Акция"
+    case bound = "Облигация"
+    case cash = "Фиатная Валюта"
+    case cryptoCurrency = "Криптовалюта"
+    case etf = "ETF"
+    case metall = "Драгоценый металл"
+}
+
+enum Currency: String {
+    case usd = "Доллар США"
+    case eur = "Евро"
+    case rur = "Российский рубль"
+    case cny = "Юань"
+    case jpy = "Йена"
+}
+
+enum TypeOfMetall: String {
+    case gold = "Золото"
+    case silver = "Серебро"
+    case palladium = "Палладий"
 }
