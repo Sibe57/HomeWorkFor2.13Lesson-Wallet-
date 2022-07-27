@@ -8,5 +8,9 @@
 import Foundation
 
 class MockFundsContainer {
+    static let shared = MockFundsContainer()
     
+    var userFunds: [Fund] = Stock.getMockStocks() + Bond.getMockBounds() +
+                            Cash.getMockCash()
+    private init() {}
 }

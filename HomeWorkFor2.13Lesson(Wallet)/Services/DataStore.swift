@@ -16,6 +16,9 @@ import Foundation
 //var quantity: Int
 
 class DataStore {
+    
+    static let shared = DataStore()
+    
 //    mock data for stocks
     let stockNames = ["Apple", "Google", "Amazon", "Netflix", "Intel",
                       "Яндекс", "Сегежа", "ГК Самолет", "Татнефть", "Лукоил"]
@@ -33,23 +36,32 @@ class DataStore {
     let stockPrices = [150.17, 2318.43, 3245.96, 210.22, 39.54, 1700.43,
                        8.57, 3800.43, 800.12, 1400.91]
     
-    let stockQuantity: Double = [5, 1, 1, 3, 10, 19, 2000, 4, 18, 8]
+    let stockQuantities: [Double] = [5, 1, 1, 3, 10, 19, 2000, 4, 18, 8]
     
 //    mock data for bonds
-    let bondsNames = ["Самолет ГК-1-об", "РОСНАНО-8-об", "ОФЗ-29017-ПК",
+    let bondNames = ["Самолет ГК-1-об", "РОСНАНО-8-об", "ОФЗ-29017-ПК",
                       "ОФЗ-29018-ПК", "РУСАЛ Братск-001Р-01"]
     
-    let bondsImage = ["Самолет ГК-1-об", "РОСНАНО-8-об", "ОФЗ-29017-ПК",
+    let bondImages = ["Самолет ГК-1-об", "РОСНАНО-8-об", "ОФЗ-29017-ПК",
                       "ОФЗ-29018-ПК", "РУСАЛ Братск-001Р-01", "GTLK"]
     
-    let bondsCurrencies: [Currency] = [.rur, .rur, .rur, .rur, .rur, .usd]
+    let bondCurrencies: [Currency] = [.rur, .rur, .rur, .rur, .rur, .usd]
     
-    let bondsYelds = [13.35, 15.62, 21.47, 18.4, 17.64, 4.21]
+    let bondYelds = [13.35, 15.62, 21.47, 18.4, 17.64, 4.21]
     
-    let bondsIssuers = ["ПАО ГК Самолет", "ООО Роснано", "МинФинРФ", "МинФинФР",
+    let bondIssuers = ["ПАО ГК Самолет", "ООО Роснано", "МинФинРФ", "МинФинФР",
                         "ПАО Русал", "ОАО ГТЛК"]
     
-    let bondsPrices = [874.34, 956.23, 994.34, 1003.74, 1030.74, 850]
+    let bondPrices = [874.34, 956.23, 994.34, 1003.74, 1030.74, 850]
     
-    let bondsQuantity: Double = [9, 4, 5, 7, 12, 1]
+    let bondQuantities: [Double] = [9, 4, 5, 7, 12, 1]
+    
+//    mock data for cash
+    let cashCurrencies: [Currency] = [.rur, .cny, .jpy]
+    
+    let cashImages = ["Рубль", "Юань", "Йена"]
+    
+    let cashQuantities = [57435.32, 7015.54, 15063.73]
+    
+    private init() {}
 }

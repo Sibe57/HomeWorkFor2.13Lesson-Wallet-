@@ -34,28 +34,6 @@ class Fund {
         let rateOfOutputCurrency = Converter.getExchangeRate(of: currency)
         return totalPrice / rateOfFunds * rateOfOutputCurrency
     }
-    
-    static func getFunds() -> [Fund] {
-        let dataStore = DataStore()
-        
-        var funds = [Fund]()
-        
-        for name in dataStore.names {
-            funds.append(
-                Fund(
-                    typeOfFunds: dataStore.fundsType,
-                    image: dataStore.images.shuffled().first ?? "trash",
-                    name: name,
-                    currency: dataStore.currency,
-
-                    price: Double.random(in: 1...100),
-                    quantity: Double.random(in: 1...10)
-                )
-            )
-        }
-        
-        return funds
-    }
 }
 
 
@@ -68,11 +46,31 @@ class Stock: Fund {
         super.init(typeOfFunds: .stock, image: image, name: name,
                     currency: currency, price: price, quantity: quantity)
     }
+    
+    static func getMockStocks() -> [Stock] {
+        
+        var stocks: [Stock] = []
+        
+        let ds = DataStore.shared
+        let quantityOfStocks = min(ds.stockImages.count, ds.stockNames.count,
+                                   ds.stockCurrencies.count, ds.stockPrices.count,
+                                   ds.stockQuantities.count, ds.stockIssuers.count)
+        
+        for i in 0..<quantityOfStocks {
+            stocks.append(Stock(image: ds.stockImages[i],
+                                name: ds.stockNames[i],
+                                currency: ds.stockCurrencies[i],
+                                price: ds.stockPrices[i],
+                                quantity: ds.stockQuantities[i],
+                                issuer: ds.stockIssuers[i]))
+        }
+        return stocks
+    }
 }
 
 
 
-class Bound: Fund {
+class Bond: Fund {
     let issuer: String
     let yield: Double
     
@@ -82,6 +80,28 @@ class Bound: Fund {
         self.yield = yield
         super.init(typeOfFunds: .bound, image: image, name: name,
                    currency: currency, price: price, quantity: quantity)
+    }
+    
+    static func getMockBounds() -> [Bond] {
+        
+        var bonds: [Bond] = []
+        
+        let ds = DataStore.shared
+        let quantityOfBonds = min(ds.bondImages.count, ds.bondNames.count,
+                                   ds.bondCurrencies.count, ds.bondPrices.count,
+                                   ds.bondQuantities.count, ds.bondIssuers.count,
+                                   ds.bondYelds.count)
+        
+        for i in 0..<quantityOfBonds {
+            bonds.append(Bond(image: ds.bondImages[i],
+                              name: ds.bondNames[i],
+                              currency: ds.bondCurrencies[i],
+                              price: ds.bondPrices[i],
+                              quantity: ds.bondQuantities[i],
+                              issuer: ds.stockIssuers[i],
+                              yield: ds.bondYelds[i]))
+        }
+        return bonds
     }
 }
 
@@ -107,6 +127,23 @@ class Cash: Fund {
                   quantity: Double) {
         super.init(typeOfFunds: .cash, image: image, name: currency.rawValue,
                    currency: currency, price: 1, quantity: quantity)
+    }
+    
+    static func getMockCash() -> [Cash] {
+        
+        var cash: [Cash] = []
+        
+        let ds = DataStore.shared
+        let quantityOfCash = min(ds.cashImages.count,
+                                 ds.cashCurrencies.count,
+                                 ds.cashQuantities.count)
+        
+        for i in 0..<quantityOfCash {
+            cash.append(Cash(image: ds.cashImages[i],
+                             currency: ds.cashCurrencies[i],
+                             quantity: ds.cashQuantities[i]))
+        }
+        return cash
     }
 }
 
