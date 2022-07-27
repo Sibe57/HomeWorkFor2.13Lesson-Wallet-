@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Funds {
+class Fund {
     let typeOfFunds: TypeOfFunds
     let image: String
     let name: String
@@ -23,7 +23,7 @@ class Funds {
         
         self.typeOfFunds = typeOfFunds
         self.image = image
-        self .name = name
+        self.name = name
         self.currency = currency
         self.price = price
         self.quantity = quantity
@@ -34,11 +34,32 @@ class Funds {
         let rateOfOutputCurrency = Converter.getExchangeRate(of: currency)
         return totalPrice / rateOfFunds * rateOfOutputCurrency
     }
+    
+    static func getFunds() -> [Fund] {
+        let dataStore = DataStore()
+        
+        var funds = [Fund]()
+        
+        for name in dataStore.names {
+            funds.append(
+                Fund(
+                    typeOfFunds: dataStore.fundsType,
+                    image: dataStore.images.shuffled().first ?? "trash",
+                    name: name,
+                    currency: dataStore.currency,
+                    price: Double.random(in: 0.1...100),
+                    quantity: Int.random(in: 1...10)
+                )
+            )
+        }
+        
+        return funds
+    }
 }
 
 
 
-class Stock: Funds {
+class Stock: Fund {
     var issuer: String
     init(image: String, name: String,currency: Currency,
          price: Double, quantity: Int, issuer: String) {

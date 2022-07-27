@@ -13,8 +13,11 @@
 		023B619928911C92007D6BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023B619728911C92007D6BCD /* Main.storyboard */; };
 		023B619B28911C92007D6BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 023B619A28911C92007D6BCD /* Assets.xcassets */; };
 		023B619E28911C92007D6BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023B619C28911C92007D6BCD /* LaunchScreen.storyboard */; };
-		0295D2162891244F00F31B38 /* Funds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D2152891244F00F31B38 /* Funds.swift */; };
+		0295D2162891244F00F31B38 /* Fund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D2152891244F00F31B38 /* Fund.swift */; };
 		0295D21828912B4200F31B38 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D21728912B4200F31B38 /* Converter.swift */; };
+		096047A72891345000DCB67F /* FundDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096047A62891345000DCB67F /* FundDetails.storyboard */; };
+		096047AA28913C5B00DCB67F /* FundDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047A928913C5B00DCB67F /* FundDetailsViewController.swift */; };
+		096047AC2891421C00DCB67F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047AB2891421C00DCB67F /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +29,11 @@
 		023B619A28911C92007D6BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		023B619D28911C92007D6BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		023B619F28911C92007D6BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0295D2152891244F00F31B38 /* Funds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funds.swift; sourceTree = "<group>"; };
+		0295D2152891244F00F31B38 /* Fund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fund.swift; sourceTree = "<group>"; };
 		0295D21728912B4200F31B38 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		096047A62891345000DCB67F /* FundDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FundDetails.storyboard; sourceTree = "<group>"; };
+		096047A928913C5B00DCB67F /* FundDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailsViewController.swift; sourceTree = "<group>"; };
+		096047AB2891421C00DCB67F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,7 @@
 		023B619028911C92007D6BCD /* HomeWorkFor2.13Lesson(Wallet) */ = {
 			isa = PBXGroup;
 			children = (
+				096047A828913C1800DCB67F /* ViewControllers */,
 				0295D2142891211300F31B38 /* Services */,
 				0295D2132891210E00F31B38 /* Views */,
 				0295D212289120FD00F31B38 /* Model */,
@@ -101,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				023B619728911C92007D6BCD /* Main.storyboard */,
+				096047A62891345000DCB67F /* FundDetails.storyboard */,
 				023B619C28911C92007D6BCD /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -109,7 +117,7 @@
 		0295D212289120FD00F31B38 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0295D2152891244F00F31B38 /* Funds.swift */,
+				0295D2152891244F00F31B38 /* Fund.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,8 +133,17 @@
 			isa = PBXGroup;
 			children = (
 				0295D21728912B4200F31B38 /* Converter.swift */,
+				096047AB2891421C00DCB67F /* DataStore.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		096047A828913C1800DCB67F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				096047A928913C5B00DCB67F /* FundDetailsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				096047A72891345000DCB67F /* FundDetails.storyboard in Resources */,
 				023B619E28911C92007D6BCD /* LaunchScreen.storyboard in Resources */,
 				023B619B28911C92007D6BCD /* Assets.xcassets in Resources */,
 				023B619928911C92007D6BCD /* Main.storyboard in Resources */,
@@ -200,9 +218,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				096047AC2891421C00DCB67F /* DataStore.swift in Sources */,
 				023B619628911C92007D6BCD /* ViewController.swift in Sources */,
 				023B619228911C92007D6BCD /* AppDelegate.swift in Sources */,
-				0295D2162891244F00F31B38 /* Funds.swift in Sources */,
+				096047AA28913C5B00DCB67F /* FundDetailsViewController.swift in Sources */,
+				0295D2162891244F00F31B38 /* Fund.swift in Sources */,
 				023B619428911C92007D6BCD /* SceneDelegate.swift in Sources */,
 				0295D21828912B4200F31B38 /* Converter.swift in Sources */,
 			);
