@@ -50,7 +50,6 @@ class Fund {
 
                     price: Double.random(in: 1...100),
                     quantity: Double.random(in: 1...10)
-
                 )
             )
         }
