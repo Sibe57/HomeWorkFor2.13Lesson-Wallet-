@@ -15,7 +15,7 @@ class Fund {
     var price: Double
     var quantity: Double
     var totalPrice: Double {
-        quantity * price
+        ((quantity * price) * 100).rounded() / 100
     }
     
     init(typeOfFunds: TypeOfFunds, image: String, name: String,
@@ -32,7 +32,9 @@ class Fund {
     func getTotalPrice(in currency: Currency) -> Double {
         let rateOfFunds = Converter.getExchangeRate(of: self.currency)
         let rateOfOutputCurrency = Converter.getExchangeRate(of: currency)
-        return totalPrice / rateOfFunds * rateOfOutputCurrency
+        let priceInCurrency = totalPrice / rateOfFunds * rateOfOutputCurrency
+        
+        return (priceInCurrency * 100).rounded() / 100
     }
 }
 
