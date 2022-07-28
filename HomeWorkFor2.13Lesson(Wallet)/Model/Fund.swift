@@ -210,12 +210,32 @@ class Metall: Fund {
 }
 
 
-enum TypeOfFunds: String {
+enum TypeOfFunds: String, Comparable {
     case stock = "Акции"
     case bound = "Облигации"
     case cash = "Фиатная Валюта"
     case cryptoCurrency = "Криптовалюта"
     case metall = "Драг. металлы"
+    
+    private var comparableValue: Int {
+        switch self {
+        case .stock:
+            return 1
+        case .bound:
+            return 2
+        case .cash:
+            return 0
+        case .cryptoCurrency:
+            return 3
+        case .metall:
+            return 4
+        }
+    }
+    
+    static func < (lhs: TypeOfFunds, rhs: TypeOfFunds) -> Bool {
+        lhs.comparableValue < rhs.comparableValue
+    }
+    
 }
 
 enum Currency: String {
