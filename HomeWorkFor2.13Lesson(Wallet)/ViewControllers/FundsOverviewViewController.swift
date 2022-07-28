@@ -71,12 +71,18 @@ extension FundsOverviewViewController: UITableViewDataSource {
                 for: indexPath
             ) as? FundsTypeTableViewCell else { return UITableViewCell() }
             
+            cell.totalCostLabel.alpha = 0
+            
             cell.fundsTypeLabel.text = fundsInfo.0.rawValue
             
             cell.setTotalCostLabel(with: fundsInfo.1, in: currencyForShowing)
             
             let percentage = (fundsInfo.1 / totalValue) * 100
             cell.fundsPercent.text = String(format: "%.1f", percentage) + "%"
+            
+            UIView.animate(withDuration: 0.25) {
+                cell.totalCostLabel.alpha = 1
+            }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(
@@ -84,8 +90,15 @@ extension FundsOverviewViewController: UITableViewDataSource {
                 for: indexPath
             ) as? HeaderFundsTypeTableViewCell else { return UITableViewCell() }
             
-            cell.setCurrencyLabel(to: currencyForShowing)
-            cell.setTotalCostLabel(with: totalValue, in: currencyForShowing)
+            cell.currencyLabel.alpha = 0
+            cell.totalValueLabel.alpha = 0
+            
+            cell.setCurrencyLabel(to: self.currencyForShowing)
+            cell.setTotalCostLabel(with: self.totalValue, in: self.currencyForShowing)
+            UIView.animate(withDuration: 0.25) {
+                cell.currencyLabel.alpha = 1
+                cell.totalValueLabel.alpha = 1
+            }
             
             cell.selectionStyle = .none
             return cell

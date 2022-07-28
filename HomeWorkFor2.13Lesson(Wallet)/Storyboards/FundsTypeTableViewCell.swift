@@ -28,9 +28,6 @@ class FundsTypeTableViewCell: UITableViewCell {
         default:
             currencySign = "₽"
         }
-        UIView.animate(withDuration: 0.3, animations: {
-            
-            self.totalCostLabel.text = String(format: "%.2f", value) + " " + currencySign
-        })
+        self.totalCostLabel.text = String(format: "%.2f", value) + " " + currencySign
     }
 }
