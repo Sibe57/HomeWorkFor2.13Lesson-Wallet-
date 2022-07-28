@@ -215,7 +215,7 @@ enum TypeOfFunds: String {
     case bound = "Облигации"
     case cash = "Фиатная Валюта"
     case cryptoCurrency = "Криптовалюта"
-    case metall = "Драгоценые металлы"
+    case metall = "Драг. металлы"
 }
 
 enum Currency: String {
