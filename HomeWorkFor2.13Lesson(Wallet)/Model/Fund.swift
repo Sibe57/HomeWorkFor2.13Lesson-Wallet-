@@ -149,7 +149,7 @@ class Cash: Fund {
 
 
 
-class cryptoCurrency: Fund {
+class CryptoCurrency: Fund {
     let ticker: String
     
     init(image: String, name: String,
@@ -157,6 +157,25 @@ class cryptoCurrency: Fund {
         self.ticker = ticker
         super.init(typeOfFunds: .cryptoCurrency, image: image, name: name,
                    currency: .usd, price: price, quantity: quantity)
+    }
+    
+    static func getMockCrypto() -> [CryptoCurrency] {
+        
+        var cryptoCurrencies: [CryptoCurrency] = []
+        
+        let ds = DataStore.shared
+        let quantityOfCrypto = min(ds.cryptoImages.count, ds.cryptoNames.count,
+                                   ds.cryptoPrices.count, ds.cryptoQuantities.count,
+                                   ds.cryptoTickers.count)
+        
+        for i in 0..<quantityOfCrypto {
+            cryptoCurrencies.append(CryptoCurrency(image: ds.cryptoImages[i],
+                                                   name: ds.cryptoNames[i],
+                                                   price: ds.cryptoPrices[i],
+                                                   quantity: ds.cryptoQuantities[i],
+                                                   ticker: ds.cryptoTickers[i]))
+        }
+        return cryptoCurrencies
     }
 }
 
@@ -185,12 +204,12 @@ class Metall: Fund {
 
 
 enum TypeOfFunds: String {
-    case stock = "Акция"
-    case bound = "Облигация"
+    case stock = "Акции"
+    case bound = "Облигации"
     case cash = "Фиатная Валюта"
     case cryptoCurrency = "Криптовалюта"
     case etf = "ETF"
-    case metall = "Драгоценый металл"
+    case metall = "Драгоценые металлы"
 }
 
 enum Currency: String {
