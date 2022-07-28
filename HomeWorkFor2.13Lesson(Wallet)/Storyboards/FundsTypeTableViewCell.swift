@@ -1,0 +1,33 @@
+//
+//  FundsTypeTableViewCell.swift
+//  HomeWorkFor2.13Lesson(Wallet)
+//
+//  Created by Федор Еронин on 28.07.2022.
+//
+
+import UIKit
+
+class FundsTypeTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var fundsPercent: UILabel!
+    @IBOutlet weak var fundsTypeLabel: UILabel!
+    @IBOutlet weak var totalCostLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    func setTotalCostLabel(with amount: Double, in currency: Currency) {
+        let currencySign: String
+        switch currency {
+        case .usd:
+            currencySign = "$"
+        case .eur:
+            currencySign = "€"
+        default:
+            currencySign = "₽"
+        }
+        totalCostLabel.text = String(format: "%.2f", amount) + " " + currencySign
+    }
+}
