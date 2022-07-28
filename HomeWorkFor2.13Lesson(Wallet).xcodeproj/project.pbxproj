@@ -15,6 +15,7 @@
 		023B619E28911C92007D6BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023B619C28911C92007D6BCD /* LaunchScreen.storyboard */; };
 		0295D2162891244F00F31B38 /* Fund.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D2152891244F00F31B38 /* Fund.swift */; };
 		0295D21828912B4200F31B38 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D21728912B4200F31B38 /* Converter.swift */; };
+		0295D21A28918C8600F31B38 /* MockFundsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D21928918C8600F31B38 /* MockFundsContainer.swift */; };
 		096047A72891345000DCB67F /* FundDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096047A62891345000DCB67F /* FundDetails.storyboard */; };
 		096047AA28913C5B00DCB67F /* FundDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047A928913C5B00DCB67F /* FundDetailsViewController.swift */; };
 		096047AC2891421C00DCB67F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047AB2891421C00DCB67F /* DataStore.swift */; };
@@ -32,6 +33,7 @@
 		023B619F28911C92007D6BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0295D2152891244F00F31B38 /* Fund.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fund.swift; sourceTree = "<group>"; };
 		0295D21728912B4200F31B38 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		0295D21928918C8600F31B38 /* MockFundsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFundsContainer.swift; sourceTree = "<group>"; };
 		096047A62891345000DCB67F /* FundDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FundDetails.storyboard; sourceTree = "<group>"; };
 		096047A928913C5B00DCB67F /* FundDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailsViewController.swift; sourceTree = "<group>"; };
 		096047AB2891421C00DCB67F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				0295D21728912B4200F31B38 /* Converter.swift */,
 				096047AB2891421C00DCB67F /* DataStore.swift */,
+				0295D21928918C8600F31B38 /* MockFundsContainer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				0295D2162891244F00F31B38 /* Fund.swift in Sources */,
 				023B619428911C92007D6BCD /* SceneDelegate.swift in Sources */,
 				0295D21828912B4200F31B38 /* Converter.swift in Sources */,
+				0295D21A28918C8600F31B38 /* MockFundsContainer.swift in Sources */,
 				096047AF2891650100DCB67F /* GetFundsExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

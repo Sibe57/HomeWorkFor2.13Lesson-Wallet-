@@ -11,7 +11,8 @@ extension Fund {
     static func getAllFunds(of type: TypeOfFunds) -> [Fund] {
         var funds = [Fund]()
         
-        for fund in Fund.getFunds() {
+        for fund in MockFundsContainer.shared.userFunds {
+            print(1)
             if fund.typeOfFunds == type {
                 funds.append(fund)
             }
