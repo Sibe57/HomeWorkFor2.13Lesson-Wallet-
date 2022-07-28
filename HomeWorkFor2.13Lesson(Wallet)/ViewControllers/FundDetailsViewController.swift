@@ -9,7 +9,7 @@ import UIKit
 
 class FundDetailsViewController: UITableViewController {
     
-    let typeOfFunds = TypeOfFunds.stock
+    var typeOfFunds = TypeOfFunds.stock
     
     var funds: [Fund] {
         Fund.getAllFunds(of: typeOfFunds)

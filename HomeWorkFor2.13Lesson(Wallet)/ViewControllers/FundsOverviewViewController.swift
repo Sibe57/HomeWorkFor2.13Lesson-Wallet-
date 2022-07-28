@@ -9,6 +9,8 @@ import UIKit
 
 class FundsOverviewViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     private var currencyForShowing: Currency = .rur
     
     private var funds: [Fund]!
@@ -24,12 +26,21 @@ class FundsOverviewViewController: UIViewController {
         setupFundsType()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? FundDetailsViewController
+        else { return }
+        guard let index = tableView.indexPathForSelectedRow else { return }
+        detailVC.typeOfFunds = costOfTypeOfFunds[index.row].0
+    }
+    
     private func setupFundsType() {
         for fund in funds {
-            costOfTypeOfFundsCounter[fund.typeOfFunds] = ((costOfTypeOfFundsCounter[fund.typeOfFunds]) ?? 0) + fund.getTotalPrice(in: currencyForShowing)
+            costOfTypeOfFundsCounter[fund.typeOfFunds] =
+            ((costOfTypeOfFundsCounter[fund.typeOfFunds]) ?? 0) +
+            fund.getTotalPrice(in: currencyForShowing)
             totalValue += fund.getTotalPrice(in: currencyForShowing)
         }
-        costOfTypeOfFunds = costOfTypeOfFundsCounter.sorted { $0.value > $1.value }
+        costOfTypeOfFunds = costOfTypeOfFundsCounter.sorted { $0.key < $1.key }
     }
 }
 
