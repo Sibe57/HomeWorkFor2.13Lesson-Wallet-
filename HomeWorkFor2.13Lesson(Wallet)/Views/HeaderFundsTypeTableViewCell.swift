@@ -34,6 +34,6 @@ class HeaderFundsTypeTableViewCell: UITableViewCell {
         default:
             currencySign = "₽"
         }
-        totalValueLabel.text = String(format: "%.2f", value) + " " + currencySign
+        totalValueLabel.text = value.thousands() + " " + currencySign
     }
 }

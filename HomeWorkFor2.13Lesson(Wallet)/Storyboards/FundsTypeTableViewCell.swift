@@ -28,6 +28,6 @@ class FundsTypeTableViewCell: UITableViewCell {
         default:
             currencySign = "₽"
         }
-        self.totalCostLabel.text = String(format: "%.2f", value) + " " + currencySign
+        self.totalCostLabel.text = value.thousands() + " " + currencySign
     }
 }
