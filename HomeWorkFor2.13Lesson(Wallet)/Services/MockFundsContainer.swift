@@ -11,6 +11,6 @@ class MockFundsContainer {
     static let shared = MockFundsContainer()
     
     var userFunds: [Fund] = Stock.getMockStocks() + Bond.getMockBounds() +
-                            Cash.getMockCash()
+    Cash.getMockCash() + CryptoCurrency.getMockCrypto()
     private init() {}
 }

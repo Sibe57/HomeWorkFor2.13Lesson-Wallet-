@@ -63,5 +63,21 @@ class DataStore {
     
     let cashQuantities = [57435.32, 7015.54, 15063.73]
     
+// mock data for crypto
+    let cryptoNames = ["Bitcoin", "Ether", "Solana", "ThetherUSD", "Dogecoin"]
+    
+    let cryptoImages = ["Bitcoin", "Ether", "Solana", "ThetherUSD", "Dogecoin"]
+    
+    let cryptoPrices = [20253.54, 1343.57, 38.35, 0.9999, 0.063]
+    
+    let cryptoQuantities = [0.14, 2.4632, 1.846, 150.19, 1000.43]
+    
+    let cryptoTickers = ["BTC", "ETH", "SOL", "TUSD", "DOGE"]
+    
+// mock data for metalls
+    let metallTypes: [TypeOfMetall] = []
+    
+    
+    
     private init() {}
 }
