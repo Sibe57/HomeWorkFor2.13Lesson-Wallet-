@@ -213,7 +213,6 @@ enum TypeOfFunds: String {
     case bound = "Облигации"
     case cash = "Фиатная Валюта"
     case cryptoCurrency = "Криптовалюта"
-    case etf = "ETF"
     case metall = "Драгоценые металлы"
 }
 

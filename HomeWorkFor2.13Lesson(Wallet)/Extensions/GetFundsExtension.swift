@@ -12,7 +12,6 @@ extension Fund {
         var funds = [Fund]()
         
         for fund in MockFundsContainer.shared.userFunds {
-            print(1)
             if fund.typeOfFunds == type {
                 funds.append(fund)
             }
