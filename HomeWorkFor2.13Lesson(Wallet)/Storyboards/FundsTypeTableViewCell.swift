@@ -18,7 +18,7 @@ class FundsTypeTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func setTotalCostLabel(with amount: Double, in currency: Currency) {
+    func setTotalCostLabel(with value: Double, in currency: Currency) {
         let currencySign: String
         switch currency {
         case .usd:
@@ -28,6 +28,9 @@ class FundsTypeTableViewCell: UITableViewCell {
         default:
             currencySign = "₽"
         }
-        totalCostLabel.text = String(format: "%.2f", amount) + " " + currencySign
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            self.totalCostLabel.text = String(format: "%.2f", value) + " " + currencySign
+        })
     }
 }

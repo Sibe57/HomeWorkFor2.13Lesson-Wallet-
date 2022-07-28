@@ -15,9 +15,9 @@ class FundsOverviewViewController: UIViewController {
     
     private var funds: [Fund]!
     
-    private var costOfTypeOfFundsCounter: [TypeOfFunds: Double] = [:]
+    private var costOfTypeOfFundsCounter: [TypeOfFunds: Double]!
     private var costOfTypeOfFunds: [(TypeOfFunds, Double)]!
-    private var totalValue: Double = 0
+    private var totalValue: Double!
     
 
     override func viewDidLoad() {
@@ -34,6 +34,8 @@ class FundsOverviewViewController: UIViewController {
     }
     
     private func setupFundsType() {
+        costOfTypeOfFundsCounter = [:]
+        totalValue = 0
         for fund in funds {
             costOfTypeOfFundsCounter[fund.typeOfFunds] =
             ((costOfTypeOfFundsCounter[fund.typeOfFunds]) ?? 0) +
@@ -56,11 +58,7 @@ extension FundsOverviewViewController: UITableViewDelegate {
 extension FundsOverviewViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return costOfTypeOfFunds.count
-        }
+        section == 0 ? 1 : costOfTypeOfFunds.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,14 +77,34 @@ extension FundsOverviewViewController: UITableViewDataSource {
             
             let percentage = (fundsInfo.1 / totalValue) * 100
             cell.fundsPercent.text = String(format: "%.1f", percentage) + "%"
-            
             return cell
-            
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FundsOverviewHeader",
-                                                     for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "FundsOverviewHeader",
+                for: indexPath
+            ) as? HeaderFundsTypeTableViewCell else { return UITableViewCell() }
+            
+            cell.setCurrencyLabel(to: currencyForShowing)
+            cell.setTotalCostLabel(with: totalValue, in: currencyForShowing)
+            
+            cell.selectionStyle = .none
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard indexPath.section == 0 else { return }
+        switch currencyForShowing {
+        case .usd:
+            currencyForShowing = .eur
+        case .eur:
+            currencyForShowing = .rur
+        default:
+            currencyForShowing = .usd
+        }
+        tableView.reloadData()
+        self.setupFundsType()
     }
     
     
