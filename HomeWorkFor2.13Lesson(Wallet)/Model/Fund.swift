@@ -180,18 +180,6 @@ class CryptoCurrency: Fund {
 }
 
 
-class Eft: Fund {
-    let issuer: String
-    
-    init(image: String, name: String, currency: Currency,
-         price: Double, quantity: Double, issuer: String) {
-        self.issuer = issuer
-        super.init(typeOfFunds: .etf, image: image, name: name,
-                    currency: currency, price: price, quantity: quantity)
-    }
-}
-
-
 class Metall: Fund {
     let typeOfMetall: TypeOfMetall
     init(typeOfMetall: TypeOfMetall, image: String, price: Double, quantity: Double) {
@@ -199,6 +187,23 @@ class Metall: Fund {
         super.init(typeOfFunds: .metall, image: image,
                    name: typeOfMetall.rawValue, currency: .usd,
                    price: price, quantity: quantity)
+    }
+    
+    static func getMockMetalls() -> [Metall] {
+        
+        var metalls: [Metall] = []
+        
+        let ds = DataStore.shared
+        let quantityOfMetalls = min(ds.metallTypes.count, ds.metalImages.count,
+                                   ds.metalPrices.count, ds.metalQantities.count)
+        
+        for i in 0..<quantityOfMetalls {
+            metalls.append(Metall(typeOfMetall: ds.metallTypes[i],
+                                  image: ds.metalImages[i],
+                                  price: ds.metalPrices[i],
+                                  quantity: ds.metalQantities[i]))
+        }
+        return metalls
     }
 }
 

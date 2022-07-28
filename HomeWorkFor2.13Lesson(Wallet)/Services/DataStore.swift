@@ -75,9 +75,10 @@ class DataStore {
     let cryptoTickers = ["BTC", "ETH", "SOL", "TUSD", "DOGE"]
     
 // mock data for metalls
-    let metallTypes: [TypeOfMetall] = []
-    
-    
+    let metallTypes: [TypeOfMetall] = [.gold, .silver]
+    let metalImages = [TypeOfMetall.gold.rawValue, TypeOfMetall.silver.rawValue]
+    let metalPrices = [39.53, 0.53]
+    let metalQantities = [10, 367.57]
     
     private init() {}
 }
