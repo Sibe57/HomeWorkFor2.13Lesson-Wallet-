@@ -24,6 +24,7 @@
 		096047AA28913C5B00DCB67F /* FundDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047A928913C5B00DCB67F /* FundDetailsViewController.swift */; };
 		096047AC2891421C00DCB67F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047AB2891421C00DCB67F /* DataStore.swift */; };
 		096047AF2891650100DCB67F /* GetFundsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047AE2891650100DCB67F /* GetFundsExtension.swift */; };
+		09D728F12893E630008D685B /* FundDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D728F02893E630008D685B /* FundDetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		096047A928913C5B00DCB67F /* FundDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailsViewController.swift; sourceTree = "<group>"; };
 		096047AB2891421C00DCB67F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		096047AE2891650100DCB67F /* GetFundsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFundsExtension.swift; sourceTree = "<group>"; };
+		09D728F02893E630008D685B /* FundDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				0295D21D28929B7800F31B38 /* FundsTypeTableViewCell.swift */,
 				0295D21F2892CA4500F31B38 /* HeaderFundsTypeTableViewCell.swift */,
+				09D728F02893E630008D685B /* FundDetailsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				0295D21E28929B7800F31B38 /* FundsTypeTableViewCell.swift in Sources */,
 				0295D21828912B4200F31B38 /* Converter.swift in Sources */,
 				0295D21A28918C8600F31B38 /* MockFundsContainer.swift in Sources */,
+				09D728F12893E630008D685B /* FundDetailsTableViewCell.swift in Sources */,
 				096047AF2891650100DCB67F /* GetFundsExtension.swift in Sources */,
 				0295D2202892CA4500F31B38 /* HeaderFundsTypeTableViewCell.swift in Sources */,
 			);
