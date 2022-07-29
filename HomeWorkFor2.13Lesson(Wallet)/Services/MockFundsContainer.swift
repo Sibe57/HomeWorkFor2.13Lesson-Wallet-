@@ -14,7 +14,7 @@ class MockFundsContainer {
     Cash.getMockCash() + CryptoCurrency.getMockCrypto() + Metall.getMockMetalls()
     
     func delFund(ofType type: TypeOfFunds, number: Int) {
-        let basePointer = userFunds.firstIndex { $0.typeOfFunds == type }
+        let basePointer = userFunds.firstIndex { $0.typeOfFunds == type } ?? 0
         
         userFunds.remove(at: basePointer + number)
     }
