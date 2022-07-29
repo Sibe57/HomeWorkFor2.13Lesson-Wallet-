@@ -36,13 +36,18 @@ class FundsTypeTableViewCell: UITableViewCell {
     }
     
     func setProgressView(on position: Double) {
-        progressView = UIView(frame: CGRect(origin: CGPoint(x: 16, y: 4),
-                                                size: CGSize(
-                                                    width: contentView.layer.bounds.width * position,
-                                                    height: contentView.layer.bounds.height - 8)))
+        progressView = UIView(frame: CGRect(
+            origin: CGPoint(x: 16, y: 2),
+            size: CGSize(
+                width: contentView.layer.bounds.width * position,
+                height: contentView.layer.bounds.height - 4)
+        ))
+        
         progressView.backgroundColor = .blue
         progressView.alpha = 0.2
-        progressView.layer.cornerRadius = 16
+        progressView.layer.cornerRadius = progressView.layer.bounds.width > 32
+        ? 16
+        : progressView.layer.bounds.width / 2
         contentView.addSubview(progressView)
     }
 }

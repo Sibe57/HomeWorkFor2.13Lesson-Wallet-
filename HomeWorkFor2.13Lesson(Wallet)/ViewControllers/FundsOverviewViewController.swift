@@ -19,6 +19,10 @@ class FundsOverviewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFundsType()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
     }
     
@@ -76,7 +80,7 @@ extension FundsOverviewViewController: UITableViewDataSource {
                 cell.totalCostLabel.alpha = 1
             }
             
-            cell.setProgressView(on: fundsInfo.1 / totalValue)
+            cell.setProgressView(on: fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing))
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(
