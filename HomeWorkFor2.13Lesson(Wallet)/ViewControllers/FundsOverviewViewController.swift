@@ -16,6 +16,13 @@ class FundsOverviewViewController: UIViewController {
     private var costOfTypeOfFunds: [(TypeOfFunds, Double)]!
     private var refToDb = MockFundsContainer.shared
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.backItem?.title = "Мои Активы"
+        navigationController?.navigationBar.backItem?.backButtonDisplayMode = .generic
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFundsType()
@@ -42,15 +49,11 @@ class FundsOverviewViewController: UIViewController {
 }
 
 
-extension FundsOverviewViewController: UITableViewDelegate {
+extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
-    
-}
-
-extension FundsOverviewViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         section == 0 ? 1 : refToDb.userFunds.count
@@ -84,6 +87,7 @@ extension FundsOverviewViewController: UITableViewDataSource {
                 on: fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)
             )
             cell.selectionStyle = .none
+            cell.setNeedsUpdateConfiguration()
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(
@@ -135,6 +139,4 @@ extension FundsOverviewViewController: UITableViewDataSource {
             }
         }
     }
-    
-    
 }

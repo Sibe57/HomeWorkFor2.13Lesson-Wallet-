@@ -18,6 +18,8 @@ class FundsTypeTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+
+    
     override func prepareForReuse() {
         progressView.removeFromSuperview()
     }
@@ -26,7 +28,7 @@ class FundsTypeTableViewCell: UITableViewCell {
         progressView = UIView(frame: CGRect(
             origin: CGPoint(x: 16, y: 2),
             size: CGSize(
-                width: contentView.layer.bounds.width * position,
+                width: UIScreen.main.bounds.width * position,
                 height: contentView.layer.bounds.height - 4)
         ))
         
