@@ -13,16 +13,12 @@ class FundsOverviewViewController: UIViewController {
     
     private var currencyForShowing: Currency = .rur
     
-    private var funds: [Fund]!
-    
-    private var costOfTypeOfFundsCounter: [TypeOfFunds: Double]!
     private var costOfTypeOfFunds: [(TypeOfFunds, Double)]!
     private var totalValue: Double!
-    
+    private var refToDb = MockFundsContainer.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        funds = MockFundsContainer.shared.userFunds
         setupFundsType()
     }
     
@@ -34,15 +30,11 @@ class FundsOverviewViewController: UIViewController {
     }
     
     private func setupFundsType() {
-        costOfTypeOfFundsCounter = [:]
-        totalValue = 0
-        for fund in funds {
-            costOfTypeOfFundsCounter[fund.typeOfFunds] =
-            ((costOfTypeOfFundsCounter[fund.typeOfFunds]) ?? 0) +
-            fund.getTotalPrice(in: currencyForShowing)
-            totalValue += fund.getTotalPrice(in: currencyForShowing)
+        
+        costOfTypeOfFunds = []
+        for (fundsType, _) in refToDb.userFunds {
+            costOfTypeOfFunds.append((fundsType, refToDb.getTotalPrice(ofType: fundsType, in: currencyForShowing)))
         }
-        costOfTypeOfFunds = costOfTypeOfFundsCounter.sorted { $0.key < $1.key }
     }
 }
 
@@ -58,7 +50,7 @@ extension FundsOverviewViewController: UITableViewDelegate {
 extension FundsOverviewViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? 1 : costOfTypeOfFunds.count
+        section == 0 ? 1 : refToDb.userFunds.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +69,7 @@ extension FundsOverviewViewController: UITableViewDataSource {
             
             cell.setTotalCostLabel(with: fundsInfo.1, in: currencyForShowing)
             
-            let percentage = (fundsInfo.1 / totalValue) * 100
+            let percentage = (fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)) * 100
             cell.fundsPercent.text = String(format: "%.1f", percentage) + "%"
             
             UIView.animate(withDuration: 0.25) {
@@ -94,7 +86,10 @@ extension FundsOverviewViewController: UITableViewDataSource {
             cell.totalValueLabel.alpha = 0
             
             cell.setCurrencyLabel(to: self.currencyForShowing)
-            cell.setTotalCostLabel(with: self.totalValue, in: self.currencyForShowing)
+            cell.setTotalCostLabel(
+                with: self.refToDb.getTotalPrice(in: currencyForShowing),
+                in: self.currencyForShowing
+            )
             UIView.animate(withDuration: 0.25) {
                 cell.currencyLabel.alpha = 1
                 cell.totalValueLabel.alpha = 1

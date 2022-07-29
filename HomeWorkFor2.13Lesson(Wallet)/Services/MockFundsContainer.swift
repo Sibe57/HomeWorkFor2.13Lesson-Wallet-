@@ -10,13 +10,51 @@ import Foundation
 class MockFundsContainer {
     static let shared = MockFundsContainer()
     
-    var userFunds: [Fund] = Stock.getMockStocks() + Bond.getMockBounds() +
-    Cash.getMockCash() + CryptoCurrency.getMockCrypto() + Metall.getMockMetalls()
+    var userFunds: [TypeOfFunds: [Fund]] = [
+        .stock: Stock.getMockStocks(),
+        .bound: Bond.getMockBounds(),
+        .cash: Cash.getMockCash(),
+        .cryptoCurrency: CryptoCurrency.getMockCrypto(),
+        .metall: Metall.getMockMetalls()
+    ]
     
     func delFund(ofType type: TypeOfFunds, number: Int) {
-        let basePointer = userFunds.firstIndex { $0.typeOfFunds == type } ?? 0
+        userFunds[type]?.remove(at: number)
+    }
+    
+    func getTotalPrice(ofType type: TypeOfFunds, in currency: Currency) -> Double {
+        var totalPrice = 0.0
+        guard let funds = userFunds[type] else { return 0 }
+        for fund in funds {
+            totalPrice += fund.getTotalPrice(in: currency)
+        }
+        return totalPrice
+    }
+    
+    func getTotalPrice(in currency: Currency) -> Double {
+        var totalPrice = 0.0
+        for funds in userFunds {
+            for fund in funds.value {
+                totalPrice += fund.getTotalPrice(in: currency)
+            }
+        }
+        return totalPrice
+    }
+    
+    func updateQuantityOfFund(type: TypeOfFunds, index: Int, newValue: Double) {
+        guard newValue > 0
+        else {
+            delFund(ofType: type, number: index)
+            return
+        }
+        guard let funds = userFunds[type], index < funds.count else { return }
         
-        userFunds.remove(at: basePointer + number)
+        let fund = funds[index]
+        
+        fund.quantity = newValue
+        
+        userFunds[type]?[index] = fund
+        
     }
     
     private init() {}
