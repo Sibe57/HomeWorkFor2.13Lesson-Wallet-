@@ -12,6 +12,7 @@ class FundDetailsTableViewCell: UITableViewCell {
     @IBOutlet var activeNameLabel: UILabel!
     @IBOutlet var activePriceLabel: UILabel!
     @IBOutlet var activeSumLabel: UILabel!
+    @IBOutlet var iconImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,19 +22,6 @@ class FundDetailsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func setSumLabel(with value: Double, in currency: Currency) {
-        let currencySign: String
-        switch currency {
-        case .usd:
-            currencySign = "$"
-        case .eur:
-            currencySign = "€"
-        default:
-            currencySign = "₽"
-        }
-        activeSumLabel.text = value.thousands() + " " + currencySign
     }
 
 }

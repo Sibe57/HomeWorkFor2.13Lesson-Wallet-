@@ -43,16 +43,22 @@ class FundDetailsViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "fundElement", for: indexPath) as? FundDetailsTableViewCell else { return UITableViewCell() }
 
         cell.selectionStyle = .none
+        
         cell.activeNameLabel.text = funds[indexPath.row].name
-        cell.activePriceLabel.text = String(Int(funds[indexPath.row].quantity)) + " шт. | " +
+        
+        cell.activePriceLabel.text = String(Int(funds[indexPath.row].quantity)) +
+        " шт. | " +
         Converter.getText(
             from: funds[indexPath.row].price,
-            with: funds[indexPath.row].currency)
+            with: funds[indexPath.row].currency
+        )
         
         cell.activeSumLabel.text = Converter.getText(
             from: funds[indexPath.row].totalPrice,
             with: funds[indexPath.row].currency
         )
+        
+        cell.iconImage.image = UIImage(systemName: funds[indexPath.row].image) ?? UIImage(systemName: "exclamationmark.icloud.fill")
 //        cell.setSumLabel(
 //            with: funds[indexPath.row].totalPrice,
 //            in: funds[indexPath.row].currency
