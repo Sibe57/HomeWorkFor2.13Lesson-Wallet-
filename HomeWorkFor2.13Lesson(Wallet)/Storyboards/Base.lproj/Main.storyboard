@@ -8,28 +8,126 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title 1-->
+        <!--Мои Активы-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HomeWorkFor2_13Lesson_Wallet_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FundsOverviewViewController" customModule="HomeWorkFor2_13Lesson_Wallet_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e0-XS-i4h">
-                                <rect key="frame" x="174" y="433" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Aa-8X-Owe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FundsOverviewHeader" id="uFZ-hU-TSL" customClass="HeaderFundsTypeTableViewCell" customModule="HomeWorkFor2_13Lesson_Wallet_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uFZ-hU-TSL" id="pXT-fV-um0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4kA-Bz-lXL">
+                                                    <rect key="frame" x="16" y="10.5" width="172" height="35"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стоимость портфеля:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aha-7c-JPK">
+                                                            <rect key="frame" x="0.0" y="0.0" width="172" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(в долларах)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Eg-Ug-AGM">
+                                                            <rect key="frame" x="0.0" y="20.5" width="172" height="14.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="134056,73 $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Cz-eY-NWZ">
+                                                    <rect key="frame" x="301.5" y="18" width="96.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="2Cz-eY-NWZ" secondAttribute="trailing" constant="16" id="J61-vv-RaL"/>
+                                                <constraint firstItem="2Cz-eY-NWZ" firstAttribute="centerY" secondItem="pXT-fV-um0" secondAttribute="centerY" id="m4C-6X-GpJ"/>
+                                                <constraint firstItem="4kA-Bz-lXL" firstAttribute="centerY" secondItem="pXT-fV-um0" secondAttribute="centerY" id="ow7-Ro-qHS"/>
+                                                <constraint firstItem="4kA-Bz-lXL" firstAttribute="leading" secondItem="pXT-fV-um0" secondAttribute="leading" constant="16" id="uTM-Kf-T3U"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="currencyLabel" destination="3Eg-Ug-AGM" id="u3F-f3-uUn"/>
+                                            <outlet property="totalValueLabel" destination="2Cz-eY-NWZ" id="EWc-jz-drJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FundsOverview" id="lvP-sg-r4U" customClass="FundsTypeTableViewCell" customModule="HomeWorkFor2_13Lesson_Wallet_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100.5" width="414" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lvP-sg-r4U" id="SQG-rT-QNC">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="0rk-8S-nRF">
+                                                    <rect key="frame" x="16" y="10" width="132" height="36"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Фиатная Валюта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p73-Yq-Hj0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="132" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="32%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J84-D9-lTX">
+                                                            <rect key="frame" x="0.0" y="21.5" width="26" height="14.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13405,73 $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5G-Yj-sQK">
+                                                    <rect key="frame" x="312" y="18" width="86" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0rk-8S-nRF" firstAttribute="leading" secondItem="SQG-rT-QNC" secondAttribute="leading" constant="16" id="EqJ-Bn-26G"/>
+                                                <constraint firstItem="z5G-Yj-sQK" firstAttribute="centerY" secondItem="SQG-rT-QNC" secondAttribute="centerY" id="FQL-Gp-z8L"/>
+                                                <constraint firstAttribute="trailing" secondItem="z5G-Yj-sQK" secondAttribute="trailing" constant="16" id="aIr-n1-pDp"/>
+                                                <constraint firstItem="0rk-8S-nRF" firstAttribute="centerY" secondItem="SQG-rT-QNC" secondAttribute="centerY" id="gos-Wg-e8z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fundsPercent" destination="J84-D9-lTX" id="O21-ke-ArU"/>
+                                            <outlet property="fundsTypeLabel" destination="p73-Yq-Hj0" id="ntI-9m-eCL"/>
+                                            <outlet property="totalCostLabel" destination="z5G-Yj-sQK" id="irP-0M-Er4"/>
+                                            <segue destination="gfZ-CJ-IPm" kind="show" identifier="toFundsDetails" id="jny-rb-By6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <segue destination="gfZ-CJ-IPm" kind="show" id="iU2-XR-jba"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Lkg-xy-X83"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bjl-6z-hi5"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Aa-8X-Owe" secondAttribute="bottom" id="Ce1-65-MfP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Aa-8X-Owe" secondAttribute="trailing" id="F2N-2h-wDk"/>
+                            <constraint firstItem="8Aa-8X-Owe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Nuk-RW-jaL"/>
+                            <constraint firstItem="8Aa-8X-Owe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mbq-Od-ySd"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title 1" largeTitleDisplayMode="always" id="93Q-qa-h1e"/>
+                    <navigationItem key="navigationItem" title="Мои Активы" largeTitleDisplayMode="always" id="93Q-qa-h1e"/>
+                    <connections>
+                        <outlet property="tableView" destination="8Aa-8X-Owe" id="DFi-M1-xvJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,6 +163,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
