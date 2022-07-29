@@ -14,12 +14,12 @@ class FundsOverviewViewController: UIViewController {
     private var currencyForShowing: Currency = .rur
     
     private var costOfTypeOfFunds: [(TypeOfFunds, Double)]!
-    private var totalValue: Double!
     private var refToDb = MockFundsContainer.shared
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupFundsType()
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
