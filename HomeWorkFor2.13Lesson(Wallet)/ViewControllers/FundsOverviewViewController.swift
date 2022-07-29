@@ -83,6 +83,8 @@ extension FundsOverviewViewController: UITableViewDataSource {
             UIView.animate(withDuration: 0.25) {
                 cell.totalCostLabel.alpha = 1
             }
+            
+            cell.setProgressView(on: fundsInfo.1 / totalValue)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(

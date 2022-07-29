@@ -12,10 +12,14 @@ class FundsTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var fundsPercent: UILabel!
     @IBOutlet weak var fundsTypeLabel: UILabel!
     @IBOutlet weak var totalCostLabel: UILabel!
+    var progressView: UIView = UIView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    override func prepareForReuse() {
+        progressView.removeFromSuperview()
     }
     
     func setTotalCostLabel(with value: Double, in currency: Currency) {
@@ -29,5 +33,16 @@ class FundsTypeTableViewCell: UITableViewCell {
             currencySign = "₽"
         }
         self.totalCostLabel.text = value.thousands() + " " + currencySign
+    }
+    
+    func setProgressView(on position: Double) {
+        progressView = UIView(frame: CGRect(origin: CGPoint(x: 16, y: 4),
+                                                size: CGSize(
+                                                    width: contentView.layer.bounds.width * position,
+                                                    height: contentView.layer.bounds.height - 8)))
+        progressView.backgroundColor = .blue
+        progressView.alpha = 0.2
+        progressView.layer.cornerRadius = 16
+        contentView.addSubview(progressView)
     }
 }
