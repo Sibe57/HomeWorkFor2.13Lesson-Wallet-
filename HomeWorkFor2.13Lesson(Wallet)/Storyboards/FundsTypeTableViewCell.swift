@@ -22,19 +22,6 @@ class FundsTypeTableViewCell: UITableViewCell {
         progressView.removeFromSuperview()
     }
     
-    func setTotalCostLabel(with value: Double, in currency: Currency) {
-        let currencySign: String
-        switch currency {
-        case .usd:
-            currencySign = "$"
-        case .eur:
-            currencySign = "€"
-        default:
-            currencySign = "₽"
-        }
-        self.totalCostLabel.text = value.thousands() + " " + currencySign
-    }
-    
     func setProgressView(on position: Double) {
         progressView = UIView(frame: CGRect(
             origin: CGPoint(x: 16, y: 2),

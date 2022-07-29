@@ -23,17 +23,4 @@ class HeaderFundsTypeTableViewCell: UITableViewCell {
             currencyLabel.text = "(в рублях)"
         }
     }
-    
-    func setTotalCostLabel(with value: Double, in currency: Currency) {
-        let currencySign: String
-        switch currency {
-        case .usd:
-            currencySign = "$"
-        case .eur:
-            currencySign = "€"
-        default:
-            currencySign = "₽"
-        }
-        totalValueLabel.text = value.thousands() + " " + currencySign
-    }
 }
