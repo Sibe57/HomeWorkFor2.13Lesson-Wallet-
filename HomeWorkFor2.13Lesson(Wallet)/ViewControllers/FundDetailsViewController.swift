@@ -40,18 +40,24 @@ class FundDetailsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "fundElement", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fundElement", for: indexPath) as? FundDetailsTableViewCell else { return UITableViewCell() }
 
         cell.selectionStyle = .none
+        cell.activeNameLabel.text = funds[indexPath.row].name
+        cell.activePriceLabel.text = String(Int(funds[indexPath.row].quantity)) + " шт. | " +
+        Converter.getText(
+            from: funds[indexPath.row].price,
+            with: funds[indexPath.row].currency)
         
-        var content = cell.defaultContentConfiguration()
-        
-        content.text = funds[indexPath.row].name
-        content.image = UIImage(systemName: funds[indexPath.row].image)
-        content.secondaryText = String(funds[indexPath.row].totalPrice)
-        
-        cell.contentConfiguration = content
-        
+        cell.activeSumLabel.text = Converter.getText(
+            from: funds[indexPath.row].totalPrice,
+            with: funds[indexPath.row].currency
+        )
+//        cell.setSumLabel(
+//            with: funds[indexPath.row].totalPrice,
+//            in: funds[indexPath.row].currency
+//        )
+//
         return cell
     }
 
