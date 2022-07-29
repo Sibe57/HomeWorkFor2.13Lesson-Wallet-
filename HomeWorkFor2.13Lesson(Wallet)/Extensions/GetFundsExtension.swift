@@ -9,14 +9,6 @@ import Foundation
 
 extension Fund {
     static func getAllFunds(of type: TypeOfFunds) -> [Fund] {
-        var funds = [Fund]()
-        
-        for fund in MockFundsContainer.shared.userFunds {
-            if fund.typeOfFunds == type {
-                funds.append(fund)
-            }
-        }
-        
-        return funds
+        MockFundsContainer.shared.userFunds[type] ?? []
     }
 }
