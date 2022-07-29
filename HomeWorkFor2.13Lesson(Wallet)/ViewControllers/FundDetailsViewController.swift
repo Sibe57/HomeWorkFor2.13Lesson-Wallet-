@@ -60,8 +60,8 @@ class FundDetailsViewController: UITableViewController {
     
     func showEditQuantityAlert(for index: Int) {
         let editAlert = UIAlertController(
-            title: typeOfFunds.rawValue + " " + funds[index].name,
-            message: "Введите кол-во, шт.",
+            title: "Изменить \(typeOfFunds.rawValue) \(funds[index].name)?",
+            message: "Введите корректное кол-во, шт.",
             preferredStyle: .alert
         )
         
@@ -72,16 +72,49 @@ class FundDetailsViewController: UITableViewController {
             title: "OK",
             style: .default,
             handler: {_ in
-                if let quantity = Double((editAlert.textFields?.first?.text) ?? "") {
-                    MockFundsContainer.shared.updateQuantityOfFund(type: self.typeOfFunds, index: index, newValue: quantity)
-                    self.tableView.reloadData()
+                if let quantity = Double((editAlert.textFields?.first?.text)!) {
+                    if quantity >= 0 {
+                        MockFundsContainer.shared.updateQuantityOfFund(type: self.typeOfFunds, index: index, newValue: quantity)
+                        if quantity == 0 {
+                            self.funds.remove(at: index)
+                        }
+                        self.tableView.reloadData()
+                    } else {
+                        self.showIncorrectNumber(for: index)
+                    }
+                } else {
+                    self.showIncorrectNumber(for: index)
                 }
             }
         )
         
         editAlert.addAction(alertButton)
         
+        let cancelButton = UIAlertAction(title: "Отмена", style: .default)
+        
+        editAlert.addAction(cancelButton)
+        
         present(editAlert, animated: true)
+    }
+    
+    func showIncorrectNumber(for index: Int) {
+        let incorrectAlert = UIAlertController(
+            title: "Некорректное значение",
+            message: "Введите корректное значение от 0 и больше",
+            preferredStyle: .alert
+        )
+        
+        let alertButton = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {_ in
+                self.showEditQuantityAlert(for: index)
+            }
+        )
+        
+        incorrectAlert.addAction(alertButton)
+        
+        present(incorrectAlert, animated: true)
     }
     
     
