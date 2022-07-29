@@ -12,5 +12,12 @@ class MockFundsContainer {
     
     var userFunds: [Fund] = Stock.getMockStocks() + Bond.getMockBounds() +
     Cash.getMockCash() + CryptoCurrency.getMockCrypto() + Metall.getMockMetalls()
+    
+    func delFund(ofType type: TypeOfFunds, number: Int) {
+        let basePointer = userFunds.firstIndex { $0.typeOfFunds == type }
+        
+        userFunds.remove(at: basePointer + number)
+    }
+    
     private init() {}
 }
