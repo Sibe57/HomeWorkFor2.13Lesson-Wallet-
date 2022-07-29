@@ -72,10 +72,9 @@ class FundDetailsViewController: UITableViewController {
             title: "OK",
             style: .default,
             handler: {_ in
-                self.title = "Поменял"
-                if let quantity = Double((editAlert.textFields?.first?.text)!) {
-                    self.funds[index].quantity = quantity
-                    
+                if let quantity = Double((editAlert.textFields?.first?.text) ?? "") {
+                    MockFundsContainer.shared.updateQuantityOfFund(type: self.typeOfFunds, index: index, newValue: quantity)
+                    self.tableView.reloadData()
                 }
             }
         )
