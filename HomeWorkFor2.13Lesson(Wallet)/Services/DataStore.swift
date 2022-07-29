@@ -23,8 +23,8 @@ class DataStore {
     let stockNames = ["Apple", "Google", "Amazon", "Netflix", "Intel",
                       "Яндекс", "Сегежа", "ГК Самолет", "Татнефть", "Лукоил"]
     
-    let stockImages = ["Apple", "Google", "Amazon", "Netflix", "Intel",
-                  "Яндекс", "Сегежа", "ГК Самолет", "Татнефть", "Лукоил"]
+    let stockImages = ["applelogo", "g.circle", "a.circle", "n.circle", "i.circle",
+                  "y.circle", "s.circle", "s.circle", "t.circle", "l.circle"]
     
     let stockCurrencies: [Currency] = [.usd, .usd, .usd, .usd, .usd, .rur, .rur,
                                        .rur, .rur, .rur]
@@ -42,8 +42,8 @@ class DataStore {
     let bondNames = ["Самолет ГК-1-об", "РОСНАНО-8-об", "ОФЗ-29017-ПК",
                       "ОФЗ-29018-ПК", "РУСАЛ Братск-001Р-01"]
     
-    let bondImages = ["Самолет ГК-1-об", "РОСНАНО-8-об", "ОФЗ-29017-ПК",
-                      "ОФЗ-29018-ПК", "РУСАЛ Братск-001Р-01", "GTLK"]
+    let bondImages = ["s.circle", "r.circle", "o.circle",
+                      "o.circle", "r.circle", "g.circle"]
     
     let bondCurrencies: [Currency] = [.rur, .rur, .rur, .rur, .rur, .usd]
     
@@ -66,7 +66,7 @@ class DataStore {
 // mock data for crypto
     let cryptoNames = ["Bitcoin", "Ether", "Solana", "ThetherUSD", "Dogecoin"]
     
-    let cryptoImages = ["Bitcoin", "Ether", "Solana", "ThetherUSD", "Dogecoin"]
+    let cryptoImages = ["bitcoinsign.circle", "e.circle", "s.circle", "dollarsign.circle", "d.circle"]
     
     let cryptoPrices = [20253.54, 1343.57, 38.35, 0.9999, 0.063]
     

@@ -22,5 +22,19 @@ class Converter {
             return 136.66
         }
     }
+    
+    static func getText(from value: Double, with currency: Currency) -> String {
+        let currencySign: String
+        
+        switch currency {
+        case .usd:
+            currencySign = "$"
+        case .eur:
+            currencySign = "€"
+        default:
+            currencySign = "₽"
+        }
+        return value.thousands() + " " + currencySign
+    }
 }
 
