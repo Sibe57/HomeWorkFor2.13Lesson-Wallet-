@@ -37,8 +37,7 @@ class FundDetailsViewController: UITableViewController {
         
         cell.activeNameLabel.text = funds[indexPath.row].name
         
-        cell.activePriceLabel.text = String(Int(funds[indexPath.row].quantity)) +
-        " шт. | " +
+        cell.activePriceLabel.text = "\(getTextQuantity(from: funds[indexPath.row].quantity)) шт. | " +
         Converter.getText(
             from: funds[indexPath.row].price,
             with: funds[indexPath.row].currency
@@ -61,14 +60,15 @@ class FundDetailsViewController: UITableViewController {
     func showEditQuantityAlert(for index: Int) {
         let editAlert = UIAlertController(
             title: "Изменить \(typeOfFunds.rawValue) \(funds[index].name)?",
-            message: "Введите корректное кол-во, шт.",
+            message: "Введите новое кол-во, шт.",
             preferredStyle: .alert
         )
         
         editAlert.addTextField()
-        editAlert.textFields?.first?.text = String(Int(funds[index].quantity))
+        editAlert.textFields?.first?.text = getTextQuantity(from: funds[index].quantity)
+        editAlert.textFields?.first?.keyboardType = .decimalPad
         
-        let alertButton = UIAlertAction(
+        let okButton = UIAlertAction(
             title: "OK",
             style: .default,
             handler: {_ in
@@ -88,10 +88,9 @@ class FundDetailsViewController: UITableViewController {
             }
         )
         
-        editAlert.addAction(alertButton)
+        editAlert.addAction(okButton)
         
         let cancelButton = UIAlertAction(title: "Отмена", style: .default)
-        
         editAlert.addAction(cancelButton)
         
         present(editAlert, animated: true)
@@ -117,6 +116,12 @@ class FundDetailsViewController: UITableViewController {
         present(incorrectAlert, animated: true)
     }
     
-    
+    func getTextQuantity(from number: Double) -> String {
+        if number.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(Int(number))
+        } else {
+            return String(number)
+        }
+    }
 
 }
