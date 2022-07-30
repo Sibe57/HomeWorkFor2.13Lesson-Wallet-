@@ -16,16 +16,19 @@ class FundsOverviewViewController: UIViewController {
     private var costOfTypeOfFunds: [(TypeOfFunds, Double)]!
     private var refToDb = MockFundsContainer.shared
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.backItem?.title = "Мои Активы"
+        navigationController?.navigationBar.backItem?.backButtonDisplayMode = .generic
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFundsType()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         tableView.reloadData()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? FundDetailsViewController
         else { return }
@@ -37,21 +40,20 @@ class FundsOverviewViewController: UIViewController {
         
         costOfTypeOfFunds = []
         for (fundsType, _) in refToDb.userFunds {
-            costOfTypeOfFunds.append((fundsType, refToDb.getTotalPrice(ofType: fundsType, in: currencyForShowing)))
+            costOfTypeOfFunds.append((fundsType,
+                                      refToDb.getTotalPrice(ofType: fundsType,
+                                                            in: currencyForShowing)))
         }
+        costOfTypeOfFunds.sort { $0.0 < $1.0 }
     }
 }
 
 
-extension FundsOverviewViewController: UITableViewDelegate {
+extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
-    
-}
-
-extension FundsOverviewViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         section == 0 ? 1 : refToDb.userFunds.count
@@ -71,7 +73,8 @@ extension FundsOverviewViewController: UITableViewDataSource {
             
             cell.fundsTypeLabel.text = fundsInfo.0.rawValue
             
-            cell.setTotalCostLabel(with: fundsInfo.1, in: currencyForShowing)
+            cell.totalCostLabel.text = Converter.getText(from: fundsInfo.1,
+                                                         with: currencyForShowing)
             
             let percentage = (fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)) * 100
             cell.fundsPercent.text = String(format: "%.1f", percentage) + "%"
@@ -80,7 +83,11 @@ extension FundsOverviewViewController: UITableViewDataSource {
                 cell.totalCostLabel.alpha = 1
             }
             
-            cell.setProgressView(on: fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing))
+            cell.setProgressView(
+                on: fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)
+            )
+            cell.selectionStyle = .none
+            cell.setNeedsUpdateConfiguration()
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(
@@ -92,10 +99,11 @@ extension FundsOverviewViewController: UITableViewDataSource {
             cell.totalValueLabel.alpha = 0
             
             cell.setCurrencyLabel(to: self.currencyForShowing)
-            cell.setTotalCostLabel(
-                with: self.refToDb.getTotalPrice(in: currencyForShowing),
-                in: self.currencyForShowing
-            )
+            
+            cell.totalValueLabel.text = Converter.getText(
+                from: self.refToDb.getTotalPrice(in: currencyForShowing),
+                with: self.currencyForShowing)
+                    
             UIView.animate(withDuration: 0.25) {
                 cell.currencyLabel.alpha = 1
                 cell.totalValueLabel.alpha = 1
@@ -108,18 +116,27 @@ extension FundsOverviewViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard indexPath.section == 0 else { return }
-        switch currencyForShowing {
-        case .usd:
-            currencyForShowing = .eur
-        case .eur:
-            currencyForShowing = .rur
-        default:
-            currencyForShowing = .usd
+        if indexPath.section == 0 {
+            switch currencyForShowing {
+            case .usd:
+                currencyForShowing = .eur
+            case .eur:
+                currencyForShowing = .rur
+            default:
+                currencyForShowing = .usd
+            }
+            tableView.reloadData()
+            self.setupFundsType()
+        } else {
+            guard let cell = tableView.cellForRow(at: indexPath) else { return }
+            
+            UIView.animate(withDuration: 0.1,delay: 0, options:[.curveEaseOut]) {
+                cell.transform = cell.transform.scaledBy(x: 0.9, y: 0.90)
+            } completion: {_ in
+                UIView.animate(withDuration: 0.1) {
+                    cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }
+            }
         }
-        tableView.reloadData()
-        self.setupFundsType()
     }
-    
-    
 }

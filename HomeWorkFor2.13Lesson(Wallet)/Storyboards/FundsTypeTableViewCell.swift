@@ -18,28 +18,17 @@ class FundsTypeTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+
+    
     override func prepareForReuse() {
         progressView.removeFromSuperview()
-    }
-    
-    func setTotalCostLabel(with value: Double, in currency: Currency) {
-        let currencySign: String
-        switch currency {
-        case .usd:
-            currencySign = "$"
-        case .eur:
-            currencySign = "€"
-        default:
-            currencySign = "₽"
-        }
-        self.totalCostLabel.text = value.thousands() + " " + currencySign
     }
     
     func setProgressView(on position: Double) {
         progressView = UIView(frame: CGRect(
             origin: CGPoint(x: 16, y: 2),
             size: CGSize(
-                width: contentView.layer.bounds.width * position,
+                width: UIScreen.main.bounds.width * position,
                 height: contentView.layer.bounds.height - 4)
         ))
         
