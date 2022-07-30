@@ -24,21 +24,13 @@ class TestsViewController: UIViewController {
     
     private var currentQuestion = 0
     private var investorProfileValue = 0
+    private var investingProfile: InvestingProfile!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         questions = Question.getQuestions()
-        setQuestion(number: 2)
-    }
-    
-    private func setQuestion(number: Int) {
-        let question = questions[number]
-        answers = question.answers.sorted { $0.value < $1.value }
-        guard answers.count == answerLabels.count else { return }
-        questionLabel.text = question.question
-        for i in answerLabels.indices {
-            answerLabels[i].text = answers[i].0
-        }
+        setQuestion(number: currentQuestion)
+        setQustionCounter()
     }
     
     @IBAction func answerButtonTapped(_ sender: UIButton) {
@@ -55,13 +47,62 @@ class TestsViewController: UIViewController {
         }
         investorProfileValue += answers[indexOfAnswer].1
         currentQuestion += 1
+        print("MEMEM" + String(investorProfileValue))
         guard questions.count > currentQuestion
         else {
+            investingProfile = InvestingProfile.setFromValue(investorProfileValue: investorProfileValue)
             self.dismiss(animated: true)
             return
         }
+        reloadView()
         
     }
+    
+    private func setQustionCounter() {
+        qustionCounter.text = "Вопрос \(currentQuestion + 1) / \(questions.count)"
+    }
+    
+    private func reloadView() {
+        UIView.animate(withDuration: 0.2) {
+            self.qustionCounter.alpha = 0
+            self.questionLabel.alpha = 0
+            for label in self.answerLabels {
+                label.alpha = 0
+            }
+            self.firstAnswerCheckBox.alpha = 0
+            self.secondAnswerCheckBox.alpha = 0
+            self.thirdAnswerCheckBox.alpha = 0
+            self.fourthAnswerCheckBox.alpha = 0
+        } completion: { _ in
+            
+            self.setQuestion(number: self.currentQuestion)
+            self.setQustionCounter()
+            UIView.animate(withDuration: 0.2) {
+                self.qustionCounter.alpha = 1
+                self.questionLabel.alpha = 1
+                for label in self.answerLabels {
+                    label.alpha = 1
+                }
+                self.firstAnswerCheckBox.alpha = 1
+                self.secondAnswerCheckBox.alpha = 1
+                self.thirdAnswerCheckBox.alpha = 1
+                self.fourthAnswerCheckBox.alpha = 1
+            }
+            
+        }
+    }
+    
+    private func setQuestion(number: Int) {
+        let question = questions[number]
+        answers = question.answers.sorted { $0.value < $1.value }
+        guard answers.count == answerLabels.count else { return }
+        questionLabel.text = question.question
+        for i in answerLabels.indices {
+            answerLabels[i].text = answers[i].0
+        }
+    }
+    
+
     
     
     
