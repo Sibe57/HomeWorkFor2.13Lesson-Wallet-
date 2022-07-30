@@ -136,5 +136,10 @@ class FundDetailsViewController: UITableViewController {
         guard let addFundVC = segue.destination as? AddFundViewController else { return }
         addFundVC.typeOfFund = typeOfFunds
     }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        funds = Fund.getAllFunds(of: typeOfFunds)
+        tableView.reloadData()
+    }
 
 }

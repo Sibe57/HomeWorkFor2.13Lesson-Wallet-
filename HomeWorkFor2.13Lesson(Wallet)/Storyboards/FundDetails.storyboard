@@ -153,6 +153,10 @@
                                 <rect key="frame" x="116" y="258" width="88.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Добавить"/>
+                                <connections>
+                                    <action selector="addFundButtonPressed" destination="eja-Pw-nNE" eventType="touchUpInside" id="Q4O-Ld-AwG"/>
+                                    <segue destination="Rlc-rT-1eL" kind="unwind" unwindAction="unwindFor:" id="JwH-zF-ejI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fx-zZ-6SO">
                                 <rect key="frame" x="122" y="297" width="76" height="31"/>
@@ -160,6 +164,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Отмена">
                                     <color key="baseForegroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="Rlc-rT-1eL" kind="unwind" unwindAction="unwindFor:" id="qvP-6a-CRo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ENb-K7-0vd"/>
@@ -183,6 +190,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCJ-iH-SKP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Rlc-rT-1eL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1600" y="121"/>
         </scene>

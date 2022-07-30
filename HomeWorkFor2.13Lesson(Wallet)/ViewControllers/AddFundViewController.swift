@@ -39,7 +39,66 @@ class AddFundViewController: UIViewController {
         }
     }
     
+//    проверка корректности ввода в текстовые поля с цифрами
+//    проверка названия акции - нет ли уже такого
+
     
-
-
+    @IBAction func addFundButtonPressed() {
+        switch typeOfFund {
+        case .stock:
+            MockFundsContainer.shared.userFunds[.stock]?.append(
+                Stock(
+                    image: "person.circle",
+                    name: nameTF.text ?? "",
+                    currency: getSelectedCurrency(),
+                    price: Double(priceTF.text ?? "") ?? 0,
+                    quantity: Double(priceTF.text ?? "") ?? 0,
+                    issuer: "Added by user"
+                )
+            )
+        case .bound:
+            MockFundsContainer.shared.userFunds[.bound]?.append(
+                Bond(
+                    image: "person.circle",
+                    name: nameTF.text ?? "",
+                    currency: getSelectedCurrency(),
+                    price: Double(priceTF.text ?? "") ?? 0,
+                    quantity: Double(priceTF.text ?? "") ?? 0,
+                    issuer: "Added by user",
+                    yield: 0
+                )
+            )
+        case .metall:
+            MockFundsContainer.shared.userFunds[.metall]?.append(
+                Metall(
+                    typeOfMetall: .gold, //надо как-то выбирать металл вместо валюты
+                    image: "person.circle",
+                    price: Double(priceTF.text ?? "") ?? 0,
+                    quantity: Double(quantityTF.text ?? "") ?? 0
+                )
+            )
+        case .cryptoCurrency:
+            MockFundsContainer.shared.userFunds[.cryptoCurrency]?.append(
+                CryptoCurrency(
+                    image: "person.circle",
+                    name: nameTF.text ?? "",
+                    price: Double(priceTF.text ?? "") ?? 0,
+                    quantity: Double(priceTF.text ?? "") ?? 0,
+                    ticker: nameTF.text ?? "" //как-то надо достать тикер
+                )
+            )
+        default:
+            MockFundsContainer.shared.userFunds[.cash]?.append(
+                Cash(
+                    image: "person.circle",
+                    currency: getSelectedCurrency(),
+                    quantity: Double(priceTF.text ?? "") ?? 0 // кэш надо как-то по-другому добавлять
+                )
+            )
+        }
+    }
+    
+    
+    
+    
 }
