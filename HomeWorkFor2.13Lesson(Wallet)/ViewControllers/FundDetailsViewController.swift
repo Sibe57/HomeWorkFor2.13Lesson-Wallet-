@@ -20,7 +20,7 @@ class FundDetailsViewController: UITableViewController {
         title = typeOfFunds.rawValue
         
         funds = Fund.getAllFunds(of: typeOfFunds)
-
+        
     }
 
     // MARK: - Table view data source
@@ -122,6 +122,19 @@ class FundDetailsViewController: UITableViewController {
         } else {
             return String(number)
         }
+    }
+    
+    @IBAction func addFundButtonPressed() {
+        MockFundsContainer.shared.addStock(
+            name: "Тест", currency: .usd, price: 100, quantity: 50, issuer: "Просто")
+        
+        funds = Fund.getAllFunds(of: typeOfFunds)
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let addFundVC = segue.destination as? AddFundViewController else { return }
+        addFundVC.typeOfFund = typeOfFunds
     }
 
 }

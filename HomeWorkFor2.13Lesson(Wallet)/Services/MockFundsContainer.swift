@@ -57,5 +57,25 @@ class MockFundsContainer {
         
     }
     
+    func addStock(
+        image: String = "n.circle",
+        name: String,
+        currency: Currency,
+        price: Double,
+        quantity: Double,
+        issuer: String
+    ) {
+        let newStock = Stock(
+            image: image,
+            name: name,
+            currency: currency,
+            price: price,
+            quantity: quantity,
+            issuer: issuer
+        )
+        
+        userFunds[.stock]?.append(newStock)
+    }
+    
     private init() {}
 }
