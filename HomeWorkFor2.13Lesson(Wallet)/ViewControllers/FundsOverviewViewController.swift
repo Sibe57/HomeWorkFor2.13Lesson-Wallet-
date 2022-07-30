@@ -11,6 +11,9 @@ class FundsOverviewViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var pieChartImage: UIImageView!
+    
+    private var histogrammShowing = false
     private var currencyForShowing: Currency = .rur
     
     private var costOfTypeOfFunds: [(TypeOfFunds, Double)]!
@@ -18,9 +21,10 @@ class FundsOverviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.navigationBar.backItem?.title = "Мои Активы"
         navigationController?.navigationBar.backItem?.backButtonDisplayMode = .generic
-        
+        setGistogrammImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +39,34 @@ class FundsOverviewViewController: UIViewController {
         guard let index = tableView.indexPathForSelectedRow else { return }
         detailVC.typeOfFunds = costOfTypeOfFunds[index.row].0
     }
+    
+    private func setGistogrammImage() {
+        let pieChartTapped = UITapGestureRecognizer(target: self,
+                                             action: #selector(showGistogramm))
+        
+        
+        pieChartImage.isUserInteractionEnabled = true
+        pieChartImage.addGestureRecognizer(pieChartTapped)
+    }
+    
+    @objc private func showGistogramm() {
+        
+        pieChartImage.transform = CGAffineTransform(rotationAngle: Double.pi)
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.45, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
+            self.pieChartImage.transform = CGAffineTransform(rotationAngle: Double.pi)
+            self.pieChartImage.transform = .identity
+            self.pieChartImage.image = self.histogrammShowing
+            ? UIImage(systemName: "chart.pie")
+            : UIImage(systemName: "chart.pie.fill")
+        }) { _ in
+        }
+        
+        tableView.reloadData()
+        histogrammShowing.toggle()
+
+    }
+    
     
     private func setupFundsType() {
         
@@ -69,7 +101,7 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
                 for: indexPath
             ) as? FundsTypeTableViewCell else { return UITableViewCell() }
             
-            cell.totalCostLabel.alpha = 0
+        
             
             cell.fundsTypeLabel.text = fundsInfo.0.rawValue
             
@@ -79,13 +111,15 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
             let percentage = (fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)) * 100
             cell.fundsPercent.text = String(format: "%.1f", percentage) + "%"
             
-            UIView.animate(withDuration: 0.25) {
-                cell.totalCostLabel.alpha = 1
-            }
+          
             
-            cell.setProgressView(
-                on: fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)
-            )
+            if histogrammShowing {
+                cell.setProgressView(
+                    on: fundsInfo.1 / refToDb.getTotalPrice(
+                        in: currencyForShowing
+                    )
+                )
+            }
             cell.selectionStyle = .none
             cell.setNeedsUpdateConfiguration()
             return cell
@@ -95,8 +129,6 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
                 for: indexPath
             ) as? HeaderFundsTypeTableViewCell else { return UITableViewCell() }
             
-            cell.currencyLabel.alpha = 0
-            cell.totalValueLabel.alpha = 0
             
             cell.setCurrencyLabel(to: self.currencyForShowing)
             
@@ -104,10 +136,6 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
                 from: self.refToDb.getTotalPrice(in: currencyForShowing),
                 with: self.currencyForShowing)
                     
-            UIView.animate(withDuration: 0.25) {
-                cell.currencyLabel.alpha = 1
-                cell.totalValueLabel.alpha = 1
-            }
             
             cell.selectionStyle = .none
             return cell
