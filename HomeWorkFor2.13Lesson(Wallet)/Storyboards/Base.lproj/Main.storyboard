@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Aa-8X-Owe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FundsOverviewHeader" id="uFZ-hU-TSL" customClass="HeaderFundsTypeTableViewCell" customModule="HomeWorkFor2_13Lesson_Wallet_" customModuleProvider="target">
@@ -115,18 +115,29 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="bjl-6z-hi5"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart.pie" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7TH-90-omJ">
+                                <rect key="frame" x="16" y="92.5" width="32" height="31"/>
+                                <color key="tintColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="6wr-6a-wdZ"/>
+                                    <constraint firstAttribute="width" secondItem="7TH-90-omJ" secondAttribute="height" multiplier="1:1" id="IZ9-Pb-kho"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Aa-8X-Owe" secondAttribute="bottom" id="Ce1-65-MfP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Aa-8X-Owe" secondAttribute="trailing" id="F2N-2h-wDk"/>
-                            <constraint firstItem="8Aa-8X-Owe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Nuk-RW-jaL"/>
+                            <constraint firstItem="8Aa-8X-Owe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="Nuk-RW-jaL"/>
+                            <constraint firstItem="7TH-90-omJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="gIC-68-Sll"/>
+                            <constraint firstItem="7TH-90-omJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="lVQ-Ma-BrG"/>
                             <constraint firstItem="8Aa-8X-Owe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mbq-Od-ySd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Мои Активы" largeTitleDisplayMode="always" id="93Q-qa-h1e"/>
                     <connections>
+                        <outlet property="pieChartImage" destination="7TH-90-omJ" id="sFz-To-RTc"/>
                         <outlet property="tableView" destination="8Aa-8X-Owe" id="DFi-M1-xvJ"/>
                     </connections>
                 </viewController>
@@ -164,6 +175,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chart.pie" catalog="system" width="128" height="121"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

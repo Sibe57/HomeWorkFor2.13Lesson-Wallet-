@@ -33,10 +33,13 @@ class FundsTypeTableViewCell: UITableViewCell {
         ))
         
         progressView.backgroundColor = .blue
-        progressView.alpha = 0.2
+        progressView.alpha = 0
         progressView.layer.cornerRadius = progressView.layer.bounds.width > 32
         ? 16
         : progressView.layer.bounds.width / 2
         contentView.addSubview(progressView)
+        UIView.animate(withDuration: 0.25) { [unowned self] in
+            self.progressView.alpha = 0.2
+        }
     }
 }
