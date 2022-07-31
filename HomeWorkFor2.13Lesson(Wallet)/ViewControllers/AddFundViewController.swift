@@ -143,6 +143,55 @@ class AddFundViewController: UIViewController {
         }
         return true
     }
+    
+    func checkExistingFund() -> Bool {
+        switch typeOfFund {
+        case .cash:
+            guard let cash = MockFundsContainer.shared.userFunds[.cash] as? [Cash] else { return true }
+            for cashFund in cash {
+                if cashFund.currency == getSelectedCurrency() {
+                    showExistingWarning()
+                    return false
+                }
+            }
+        case .metall:
+            guard let metalls = MockFundsContainer.shared.userFunds[.metall] as? [Metall] else { return true }
+            for metall in metalls {
+                if metall.typeOfMetall == getSelectedMetall() {
+                    showExistingWarning()
+                    return false
+                }
+            }
+        case .stock:
+            guard let stocks = MockFundsContainer.shared.userFunds[.stock] as? [Stock] else { return true }
+            for stock in stocks {
+                if stock.name.lowercased() == nameTF.text?.lowercased() {
+                    showExistingWarning()
+                    return false
+                }
+            }
+        case .bound:
+            guard let bonds = MockFundsContainer.shared.userFunds[.bound] as? [Bond] else { return true }
+            for bond in bonds {
+                if bond.name.lowercased() == nameTF.text?.lowercased() {
+                    showExistingWarning()
+                    return false
+                }
+            }
+        case .cryptoCurrency:
+            guard let cryptos = MockFundsContainer.shared.userFunds[.cryptoCurrency] as? [CryptoCurrency] else { return true }
+            for crypto in cryptos {
+                if crypto.name.lowercased() == nameTF.text?.lowercased() {
+                    showExistingWarning()
+                    return false
+                }
+            }
+        default:
+            return true
+        }
+        
+        return true
+    }
 
     
     func showIncorrectNumber(textField: UITextField) {
@@ -182,11 +231,29 @@ class AddFundViewController: UIViewController {
         
         present(incorrectAlert, animated: true)
     }
-//    проверка корректности ввода в текстовые поля с цифрами
-//    проверка названия акции - нет ли уже такого
-
+    
+    func showExistingWarning() {
+        let incorrectAlert = UIAlertController(
+            title: "Такой актив уже существует",
+            message: "Измените его количество кликнув по активу с таким именем из списка",
+            preferredStyle: .alert
+        )
+        
+        let alertButton = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {_ in
+                self.dismiss(animated: true)
+            }
+        )
+        
+        incorrectAlert.addAction(alertButton)
+        
+        present(incorrectAlert, animated: true)
+    }
     
     @IBAction func addFundButtonPressed() {
+        guard checkExistingFund() else { return }
         guard checkCorrectInputString(for: nameTF, tickerTF, issuerTF) else { return }
         guard checkCorrectInputNumber(for: yieldTF, quantityTF, priceTF) else { return }
         
