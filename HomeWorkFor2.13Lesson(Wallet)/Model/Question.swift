@@ -74,9 +74,15 @@ enum InvestingProfile {
             targetBalance[.bound] = 0.49...0.70
             targetBalance[.cash] = 0.05...0.15
             targetBalance[.metall] = 0.15...0.25
-            targetBalance[.cryptoCurrency] = 0.0...0.5
+            targetBalance[.cryptoCurrency] = 0.0...0.05
         }
         
         return targetBalance
     }
+}
+
+enum Recomendation {
+    case moreThan
+    case lessThan
+    case perfect
 }
