@@ -17,12 +17,6 @@ class FundsTypeTableViewCell: UITableViewCell {
     
     var progressView: UIView = UIView()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-
-    
     override func prepareForReuse() {
         progressView.removeFromSuperview()
     }

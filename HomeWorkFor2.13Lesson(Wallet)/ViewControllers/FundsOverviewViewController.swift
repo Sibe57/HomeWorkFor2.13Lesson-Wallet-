@@ -144,10 +144,7 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
                 for: indexPath
             ) as? FundsTypeTableViewCell else { return UITableViewCell() }
             
-        
-            
             cell.fundsTypeLabel.text = fundsInfo.0.rawValue
-            
             cell.totalCostLabel.text = Converter.getText(from: fundsInfo.1,
                                                          with: currencyForShowing)
             
@@ -181,14 +178,11 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
                 for: indexPath
             ) as? HeaderFundsTypeTableViewCell else { return UITableViewCell() }
             
-            
             cell.setCurrencyLabel(to: self.currencyForShowing)
             
             cell.totalValueLabel.text = Converter.getText(
                 from: self.refToDb.getTotalPrice(in: currencyForShowing),
                 with: self.currencyForShowing)
-                    
-            
             cell.selectionStyle = .none
             return cell
         }
