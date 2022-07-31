@@ -42,6 +42,17 @@ enum InvestingProfile {
         }
     }
     
+    func getDescription() -> String {
+        switch self {
+        case .agressive:
+            return "Вам подходит агрессивная инвестиционная стратегия"
+        case .middle:
+            return "Вам подходит сбалансированная инвестиционная стратегия"
+        case .conservative:
+            return "Вам подходит консервативная инвестиционная стратегия"
+        }
+    }
+    
     func getTargetBalance() -> [TypeOfFunds: ClosedRange<Double>] {
         var targetBalance: [TypeOfFunds: ClosedRange<Double>] = [:]
         

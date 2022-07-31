@@ -22,6 +22,7 @@ class TestsViewController: UIViewController {
     private var questions: [Question]!
     private var answers: [(String, Int)] = []
     
+    @IBOutlet weak var resultLabel: UILabel!
     private var currentQuestion = 0
     private var investorProfileValue = 0
     private var investingProfile: InvestingProfile!
@@ -31,6 +32,7 @@ class TestsViewController: UIViewController {
         questions = Question.getQuestions()
         setQuestion(number: currentQuestion)
         setQustionCounter()
+        resultLabel.isHidden = true
     }
     
     @IBAction func answerButtonTapped(_ sender: UIButton) {
@@ -51,10 +53,12 @@ class TestsViewController: UIViewController {
         guard questions.count > currentQuestion
         else {
             investingProfile = InvestingProfile.setFromValue(investorProfileValue: investorProfileValue)
-            self.dismiss(animated: true)
+            resultLabel.text = investingProfile.getDescription()
+            resultLabel.isHidden = false
+            hideView(withReload: false)
             return
         }
-        reloadView()
+        hideView(withReload: true)
         
     }
     
@@ -62,7 +66,7 @@ class TestsViewController: UIViewController {
         qustionCounter.text = "Вопрос \(currentQuestion + 1) / \(questions.count)"
     }
     
-    private func reloadView() {
+    private func hideView(withReload: Bool) {
         UIView.animate(withDuration: 0.2) {
             self.qustionCounter.alpha = 0
             self.questionLabel.alpha = 0
@@ -75,20 +79,26 @@ class TestsViewController: UIViewController {
             self.fourthAnswerCheckBox.alpha = 0
         } completion: { _ in
             
-            self.setQuestion(number: self.currentQuestion)
-            self.setQustionCounter()
-            UIView.animate(withDuration: 0.2) {
-                self.qustionCounter.alpha = 1
-                self.questionLabel.alpha = 1
-                for label in self.answerLabels {
-                    label.alpha = 1
-                }
-                self.firstAnswerCheckBox.alpha = 1
-                self.secondAnswerCheckBox.alpha = 1
-                self.thirdAnswerCheckBox.alpha = 1
-                self.fourthAnswerCheckBox.alpha = 1
+            if withReload {
+                self.showView()
             }
             
+        }
+    }
+    
+    private func showView() {
+        UIView.animate(withDuration: 0.2) {
+            self.setQuestion(number: self.currentQuestion)
+            self.setQustionCounter()
+            self.qustionCounter.alpha = 1
+            self.questionLabel.alpha = 1
+            for label in self.answerLabels {
+                label.alpha = 1
+            }
+            self.firstAnswerCheckBox.alpha = 1
+            self.secondAnswerCheckBox.alpha = 1
+            self.thirdAnswerCheckBox.alpha = 1
+            self.fourthAnswerCheckBox.alpha = 1
         }
     }
     
