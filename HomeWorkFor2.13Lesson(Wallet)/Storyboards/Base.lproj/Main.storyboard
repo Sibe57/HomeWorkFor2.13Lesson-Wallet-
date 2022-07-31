@@ -135,9 +135,9 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вам больше всего подходит консервативная инвестиционная стратегия" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-Ab-ON0">
-                                <rect key="frame" x="16" y="385.5" width="382" height="71"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рекомендуемый баланс портфеля" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmT-Gg-gqt">
+                                <rect key="frame" x="16" y="344" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -148,12 +148,12 @@
                         <constraints>
                             <constraint firstItem="uQq-dG-9zQ" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="16" id="0Bc-gb-iij"/>
                             <constraint firstItem="4TV-67-6NW" firstAttribute="top" secondItem="6Pt-wU-bnR" secondAttribute="top" constant="20" id="2X4-Xz-GYO"/>
+                            <constraint firstItem="gmT-Gg-gqt" firstAttribute="top" secondItem="6Pt-wU-bnR" secondAttribute="top" constant="300" id="A60-aT-rkE"/>
                             <constraint firstItem="dkh-r7-UT0" firstAttribute="top" secondItem="6Pt-wU-bnR" secondAttribute="top" constant="300" id="PCu-yA-WxS"/>
                             <constraint firstItem="4TV-67-6NW" firstAttribute="centerX" secondItem="RYs-A6-UdB" secondAttribute="centerX" id="X51-SM-ct8"/>
-                            <constraint firstAttribute="trailing" secondItem="Esb-Ab-ON0" secondAttribute="trailing" constant="16" id="XiL-tT-RSe"/>
                             <constraint firstItem="uQq-dG-9zQ" firstAttribute="top" secondItem="4TV-67-6NW" secondAttribute="bottom" constant="40" id="cSj-MD-DUg"/>
-                            <constraint firstItem="Esb-Ab-ON0" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="16" id="crI-rg-i8s"/>
-                            <constraint firstItem="Esb-Ab-ON0" firstAttribute="centerY" secondItem="RYs-A6-UdB" secondAttribute="centerY" id="uX0-YZ-4rF"/>
+                            <constraint firstItem="6Pt-wU-bnR" firstAttribute="trailing" secondItem="gmT-Gg-gqt" secondAttribute="trailing" constant="16" id="iai-iP-LqV"/>
+                            <constraint firstItem="gmT-Gg-gqt" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="16" id="ipl-Ck-Szz"/>
                             <constraint firstAttribute="trailing" secondItem="uQq-dG-9zQ" secondAttribute="trailing" constant="16" id="vcU-pM-fi0"/>
                             <constraint firstItem="6Pt-wU-bnR" firstAttribute="trailing" secondItem="dkh-r7-UT0" secondAttribute="trailing" constant="36" id="yxX-A9-y1X"/>
                             <constraint firstItem="dkh-r7-UT0" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="36" id="zVw-al-vgF"/>
@@ -162,9 +162,9 @@
                     <connections>
                         <outlet property="firstAnswerCheckBox" destination="FAn-ul-vQ8" id="EI7-d0-aYC"/>
                         <outlet property="fourthAnswerCheckBox" destination="gyF-9u-AZL" id="gQZ-GH-16k"/>
+                        <outlet property="questionCounter" destination="4TV-67-6NW" id="rkB-aw-Whh"/>
                         <outlet property="questionLabel" destination="uQq-dG-9zQ" id="Aag-tC-l5n"/>
-                        <outlet property="qustionCounter" destination="4TV-67-6NW" id="rkB-aw-Whh"/>
-                        <outlet property="resultLabel" destination="Esb-Ab-ON0" id="mUq-hJ-LoN"/>
+                        <outlet property="resultBalanceLabel" destination="gmT-Gg-gqt" id="x6T-96-Ms1"/>
                         <outlet property="secondAnswerCheckBox" destination="9ZY-XM-JrS" id="hZ2-pB-GvH"/>
                         <outlet property="thirdAnswerCheckBox" destination="dBI-ZV-Jjw" id="7yt-BE-p4G"/>
                         <outletCollection property="answerLabels" destination="FzY-sL-W5h" collectionClass="NSMutableArray" id="Frv-VH-siy"/>
@@ -175,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxj-1p-O6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="803.57142857142856"/>
+            <point key="canvasLocation" x="929" y="784"/>
         </scene>
         <!--Мои Активы-->
         <scene sceneID="tne-QT-ifu">
@@ -334,7 +334,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CX0-SM-Cwc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1564" y="80"/>
+            <point key="canvasLocation" x="1563" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ExW-LW-HpR">

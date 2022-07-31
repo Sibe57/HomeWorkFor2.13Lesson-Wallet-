@@ -9,7 +9,7 @@ import UIKit
 
 class TestsViewController: UIViewController {
     
-    @IBOutlet weak var qustionCounter: UILabel!
+    @IBOutlet weak var questionCounter: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var answerLabels: [UILabel]!
     
@@ -19,10 +19,11 @@ class TestsViewController: UIViewController {
     @IBOutlet weak var thirdAnswerCheckBox: UIButton!
     @IBOutlet weak var fourthAnswerCheckBox: UIButton!
     
+    @IBOutlet weak var resultBalanceLabel: UILabel!
+    
     private var questions: [Question]!
     private var answers: [(String, Int)] = []
     
-    @IBOutlet weak var resultLabel: UILabel!
     private var currentQuestion = 0
     private var investorProfileValue = 0
     private var investingProfile: InvestingProfile!
@@ -32,7 +33,7 @@ class TestsViewController: UIViewController {
         questions = Question.getQuestions()
         setQuestion(number: currentQuestion)
         setQustionCounter()
-        resultLabel.isHidden = true
+        resultBalanceLabel.isHidden = true
     }
     
     @IBAction func answerButtonTapped(_ sender: UIButton) {
@@ -53,22 +54,22 @@ class TestsViewController: UIViewController {
         guard questions.count > currentQuestion
         else {
             investingProfile = InvestingProfile.setFromValue(investorProfileValue: investorProfileValue)
-            resultLabel.text = investingProfile.getDescription()
-            resultLabel.isHidden = false
             hideView(withReload: false)
+            showResult()
             return
         }
         hideView(withReload: true)
         
     }
     
+    
     private func setQustionCounter() {
-        qustionCounter.text = "Вопрос \(currentQuestion + 1) / \(questions.count)"
+        questionCounter.text = "Вопрос \(currentQuestion + 1) / \(questions.count)"
     }
     
     private func hideView(withReload: Bool) {
-        UIView.animate(withDuration: 0.2) {
-            self.qustionCounter.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.questionCounter.alpha = 0
             self.questionLabel.alpha = 0
             for label in self.answerLabels {
                 label.alpha = 0
@@ -82,15 +83,14 @@ class TestsViewController: UIViewController {
             if withReload {
                 self.showView()
             }
-            
         }
     }
     
     private func showView() {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.3) {
             self.setQuestion(number: self.currentQuestion)
             self.setQustionCounter()
-            self.qustionCounter.alpha = 1
+            self.questionCounter.alpha = 1
             self.questionLabel.alpha = 1
             for label in self.answerLabels {
                 label.alpha = 1
@@ -110,6 +110,35 @@ class TestsViewController: UIViewController {
         for i in answerLabels.indices {
             answerLabels[i].text = answers[i].0
         }
+    }
+    
+    private func showResult() {
+        resultBalanceLabel.alpha = 0
+        resultBalanceLabel.isHidden = false
+        resultBalanceLabel.text = """
+Рекомендуемый баланс:
+Акции: \(getTargetString(for: .stock))
+Облигации: \(getTargetString(for: .bound))
+Валюта: \(getTargetString(for: .cash))
+Драг. металлы: \(getTargetString(for: .metall))
+Криптовалюта: \(getTargetString(for: .cryptoCurrency))
+"""
+        UIView.animate(withDuration: 0.3, delay: 0.4) {
+            self.questionCounter.text = "Ваш результат:"
+            self.questionLabel.text = self.investingProfile.getDescription()
+            self.questionCounter.alpha = 1
+            self.questionLabel.alpha = 1
+            self.resultBalanceLabel.alpha = 1
+        }
+        
+    }
+    
+    private func getTargetString(for type:TypeOfFunds) -> String {
+        let targetBalance = investingProfile.getTargetBalance()
+        let lowerBound = (Int((targetBalance[type]?.lowerBound ?? 0) * 100))
+        let upperBound = (Int((targetBalance[type]?.upperBound ?? 0) * 100))
+        return "\(lowerBound)% - \(upperBound)%"
+        
     }
     
 
