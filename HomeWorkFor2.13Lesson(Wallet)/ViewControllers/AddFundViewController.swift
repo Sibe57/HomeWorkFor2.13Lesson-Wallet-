@@ -28,7 +28,20 @@ class AddFundViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = "Добавить \(typeOfFund.rawValue.lowercased())"
         
+        setupTFInput()
         showTextFieldsNeeded(for: typeOfFund)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+
+    
+    func setupTFInput() {
+        quantityTF.keyboardType = .decimalPad
+        priceTF.keyboardType = .decimalPad
+        yieldTF.keyboardType = .decimalPad
     }
     
     func showTextFieldsNeeded(for typeOfFund: TypeOfFunds) {
@@ -107,11 +120,76 @@ class AddFundViewController: UIViewController {
         }
     }
     
+    func checkCorrectInputNumber(for textFields: UITextField...) -> Bool {
+        for textField in textFields {
+            if !textField.isHidden {
+                if Double(textField.text ?? "") ?? -1 < 0 {
+                    showIncorrectNumber(textField: textField)
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    func checkCorrectInputString(for textFields: UITextField...) -> Bool {
+        for textField in textFields {
+            if !textField.isHidden {
+                if textField.text?.isEmpty ?? false {
+                    showEmptyTextFieldWarning(textField: textField)
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    
+    func showIncorrectNumber(textField: UITextField) {
+        let incorrectAlert = UIAlertController(
+            title: "Некорректное значение",
+            message: "Введите корректное значение для поля '\(textField.placeholder ?? "поля")': число от 0 и больше",
+            preferredStyle: .alert
+        )
+        
+        let alertButton = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {_ in
+                textField.text?.removeAll()
+            }
+        )
+        
+        incorrectAlert.addAction(alertButton)
+        
+        present(incorrectAlert, animated: true)
+    }
+    
+    func showEmptyTextFieldWarning(textField: UITextField) {
+        let incorrectAlert = UIAlertController(
+            title: "Введите '\(textField.placeholder ?? "значение")'",
+            message: "Введите '\(textField.placeholder ?? "значение")'",
+            preferredStyle: .alert
+        )
+        
+        let alertButton = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil
+        )
+        
+        incorrectAlert.addAction(alertButton)
+        
+        present(incorrectAlert, animated: true)
+    }
 //    проверка корректности ввода в текстовые поля с цифрами
 //    проверка названия акции - нет ли уже такого
 
     
     @IBAction func addFundButtonPressed() {
+        guard checkCorrectInputString(for: nameTF, tickerTF, issuerTF) else { return }
+        guard checkCorrectInputNumber(for: yieldTF, quantityTF, priceTF) else { return }
+        
         switch typeOfFund {
         case .stock:
             MockFundsContainer.shared.userFunds[.stock]?.append(
@@ -164,6 +242,9 @@ class AddFundViewController: UIViewController {
                 )
             )
         }
+        
+        performSegue(withIdentifier: "manualUnwind", sender: nil)
+
     }
     
     

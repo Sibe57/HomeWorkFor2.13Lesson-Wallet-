@@ -32,8 +32,6 @@ class FundDetailsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "fundElement", for: indexPath) as? FundDetailsTableViewCell else { return UITableViewCell() }
-
-//        cell.selectionStyle = .none
         
         cell.activeNameLabel.text = funds[indexPath.row].name
         
