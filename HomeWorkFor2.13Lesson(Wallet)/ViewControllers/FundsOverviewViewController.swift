@@ -11,8 +11,9 @@ class FundsOverviewViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet var pieChartImage: UIImageView!
+    @IBOutlet weak var pieChartImage: UIImageView!
     
+    @IBOutlet weak var toTestsImage: UIImageView!
     private var histogrammShowing = false
     private var currencyForShowing: Currency = .rur
     
@@ -25,6 +26,7 @@ class FundsOverviewViewController: UIViewController {
         navigationController?.navigationBar.backItem?.title = "Мои Активы"
         navigationController?.navigationBar.backItem?.backButtonDisplayMode = .generic
         setGistogrammImage()
+        setToTestsImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +49,23 @@ class FundsOverviewViewController: UIViewController {
         
         pieChartImage.isUserInteractionEnabled = true
         pieChartImage.addGestureRecognizer(pieChartTapped)
+    }
+    
+    private func setToTestsImage() {
+        let toTestsTapped = UITapGestureRecognizer(target: self,
+                                                   action: #selector(openTests))
+        toTestsImage.isUserInteractionEnabled = true
+        toTestsImage.addGestureRecognizer(toTestsTapped)
+    }
+    
+    @objc private func openTests() {
+        toTestsImage.transform = CGAffineTransform(rotationAngle: 0.3)
+        
+        UIImageView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0) {
+            self.toTestsImage.transform = .identity
+        }
+        
+        performSegue(withIdentifier: "toTests", sender: nil)
     }
     
     @objc private func showGistogramm() {

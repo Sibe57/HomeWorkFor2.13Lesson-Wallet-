@@ -20,6 +20,8 @@
 		0295D21C28928F1B00F31B38 /* FundsOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D21B28928F1B00F31B38 /* FundsOverviewViewController.swift */; };
 		0295D21E28929B7800F31B38 /* FundsTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D21D28929B7800F31B38 /* FundsTypeTableViewCell.swift */; };
 		0295D2202892CA4500F31B38 /* HeaderFundsTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295D21F2892CA4500F31B38 /* HeaderFundsTypeTableViewCell.swift */; };
+		029851DB28959C5B00925259 /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029851DA28959C5B00925259 /* TestsViewController.swift */; };
+		029851DF2895A2C300925259 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029851DE2895A2C300925259 /* Question.swift */; };
 		096047A72891345000DCB67F /* FundDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096047A62891345000DCB67F /* FundDetails.storyboard */; };
 		096047AA28913C5B00DCB67F /* FundDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047A928913C5B00DCB67F /* FundDetailsViewController.swift */; };
 		096047AC2891421C00DCB67F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096047AB2891421C00DCB67F /* DataStore.swift */; };
@@ -43,6 +45,8 @@
 		0295D21B28928F1B00F31B38 /* FundsOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundsOverviewViewController.swift; sourceTree = "<group>"; };
 		0295D21D28929B7800F31B38 /* FundsTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FundsTypeTableViewCell.swift; path = "HomeWorkFor2.13Lesson(Wallet)/Storyboards/FundsTypeTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		0295D21F2892CA4500F31B38 /* HeaderFundsTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFundsTypeTableViewCell.swift; sourceTree = "<group>"; };
+		029851DA28959C5B00925259 /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
+		029851DE2895A2C300925259 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		096047A62891345000DCB67F /* FundDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FundDetails.storyboard; sourceTree = "<group>"; };
 		096047A928913C5B00DCB67F /* FundDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailsViewController.swift; sourceTree = "<group>"; };
 		096047AB2891421C00DCB67F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				0295D2152891244F00F31B38 /* Fund.swift */,
+				029851DE2895A2C300925259 /* Question.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			children = (
 				0295D21B28928F1B00F31B38 /* FundsOverviewViewController.swift */,
 				096047A928913C5B00DCB67F /* FundDetailsViewController.swift */,
+				029851DA28959C5B00925259 /* TestsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 				0295D21C28928F1B00F31B38 /* FundsOverviewViewController.swift in Sources */,
 				02652E862892D70C0073A241 /* ThousandsSeparatorExtension.swift in Sources */,
 				023B619228911C92007D6BCD /* AppDelegate.swift in Sources */,
+				029851DF2895A2C300925259 /* Question.swift in Sources */,
 				096047AA28913C5B00DCB67F /* FundDetailsViewController.swift in Sources */,
 				0295D2162891244F00F31B38 /* Fund.swift in Sources */,
 				023B619428911C92007D6BCD /* SceneDelegate.swift in Sources */,
@@ -259,6 +266,7 @@
 				0295D21828912B4200F31B38 /* Converter.swift in Sources */,
 				0295D21A28918C8600F31B38 /* MockFundsContainer.swift in Sources */,
 				09D728F12893E630008D685B /* FundDetailsTableViewCell.swift in Sources */,
+				029851DB28959C5B00925259 /* TestsViewController.swift in Sources */,
 				096047AF2891650100DCB67F /* GetFundsExtension.swift in Sources */,
 				0295D2202892CA4500F31B38 /* HeaderFundsTypeTableViewCell.swift in Sources */,
 			);
