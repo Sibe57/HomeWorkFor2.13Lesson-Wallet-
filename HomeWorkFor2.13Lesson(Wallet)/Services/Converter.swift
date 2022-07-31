@@ -31,8 +31,10 @@ class Converter {
             currencySign = "$"
         case .eur:
             currencySign = "€"
-        default:
+        case .rur:
             currencySign = "₽"
+        default:
+            currencySign = "¥"
         }
         return value.thousands() + " " + currencySign
     }
