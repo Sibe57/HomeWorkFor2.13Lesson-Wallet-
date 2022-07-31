@@ -61,9 +61,7 @@ class TestsViewController: UIViewController {
             return
         }
         hideView(withReload: true)
-        
     }
-    
     
     private func setQustionCounter() {
         questionCounter.text = "Вопрос \(currentQuestion + 1) / \(questions.count)"
@@ -145,11 +143,4 @@ class TestsViewController: UIViewController {
         return "\(lowerBound)% - \(upperBound)%"
         
     }
-    
-
-    
-    
-    
-
-
 }
