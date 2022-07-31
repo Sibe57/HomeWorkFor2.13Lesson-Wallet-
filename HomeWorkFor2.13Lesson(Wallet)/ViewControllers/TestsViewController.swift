@@ -50,7 +50,6 @@ class TestsViewController: UIViewController {
         }
         investorProfileValue += answers[indexOfAnswer].1
         currentQuestion += 1
-        print("MEMEM" + String(investorProfileValue))
         guard questions.count > currentQuestion
         else {
             investingProfile = InvestingProfile.setFromValue(investorProfileValue: investorProfileValue)

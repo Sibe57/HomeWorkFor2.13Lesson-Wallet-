@@ -12,8 +12,11 @@ class FundsOverviewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var pieChartImage: UIImageView!
-    
     @IBOutlet weak var toTestsImage: UIImageView!
+    
+    @IBOutlet weak var investingProfileLabel: UILabel!
+    var investingProfile: InvestingProfile?
+    
     private var histogrammShowing = false
     private var currencyForShowing: Currency = .rur
     
@@ -33,6 +36,8 @@ class FundsOverviewViewController: UIViewController {
         super.viewWillAppear(animated)
         setupFundsType()
         tableView.reloadData()
+        setInvestingProfileLabel()
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,6 +45,19 @@ class FundsOverviewViewController: UIViewController {
         else { return }
         guard let index = tableView.indexPathForSelectedRow else { return }
         detailVC.typeOfFunds = costOfTypeOfFunds[index.row].0
+    }
+    
+    private func setInvestingProfileLabel() {
+        switch investingProfile {
+        case .agressive:
+            investingProfileLabel.text = "Агрессивный профиль"
+        case .middle:
+            investingProfileLabel.text = "Сбалансированный профиль"
+        case .conservative:
+            investingProfileLabel.text = "Консервативный профиль"
+        case .none:
+            investingProfileLabel.text = "Узнать инвестиционный профиль"
+        }
     }
     
     private func setGistogrammImage() {
