@@ -12,16 +12,73 @@ class AddFundViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     
     @IBOutlet var nameTF: UITextField!
+    @IBOutlet var tickerTF: UITextField!
     @IBOutlet var quantityTF: UITextField!
     @IBOutlet var priceTF: UITextField!
+    @IBOutlet var issuerTF: UITextField!
+    @IBOutlet var yieldTF: UITextField!
     
+    @IBOutlet var metallSC: UISegmentedControl!
     @IBOutlet var currencySC: UISegmentedControl!
     
     var typeOfFund: TypeOfFunds!
+    let addedByUserIcon = "person.circle"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = "Добавить \(typeOfFund.rawValue.lowercased())"
+        
+        showTextFieldsNeeded(for: typeOfFund)
+    }
+    
+    func showTextFieldsNeeded(for typeOfFund: TypeOfFunds) {
+        hideAllItems()
+        
+        switch typeOfFund {
+        case .bound:
+            nameTF.isHidden = false
+            issuerTF.isHidden = false
+            yieldTF.isHidden = false
+            quantityTF.isHidden = false
+            priceTF.isHidden = false
+            currencySC.isHidden = false
+            
+        case .metall:
+            metallSC.isHidden = false
+            priceTF.isHidden = false
+            quantityTF.isHidden = false
+            
+        case .stock:
+            nameTF.isHidden = false
+            issuerTF.isHidden = false
+            quantityTF.isHidden = false
+            priceTF.isHidden = false
+            currencySC.isHidden = false
+        
+        case .cryptoCurrency:
+            nameTF.isHidden = false
+            priceTF.isHidden = false
+            quantityTF.isHidden = false
+            tickerTF.isHidden = false
+            
+        default: //cash
+            quantityTF.isHidden = false
+            currencySC.isHidden = false
+        }
+    }
+    
+    func hideAllItems() {
+        metallSC.isHidden = true
+
+        nameTF.isHidden = true
+        tickerTF.isHidden = true
+        issuerTF.isHidden = true
+        yieldTF.isHidden = true
+        quantityTF.isHidden = true
+        priceTF.isHidden = true
+        
+        currencySC.isHidden = true
+        
     }
     
     func getSelectedCurrency() -> Currency {
@@ -39,6 +96,17 @@ class AddFundViewController: UIViewController {
         }
     }
     
+    func getSelectedMetall() -> TypeOfMetall {
+        switch metallSC.titleForSegment(at: metallSC.selectedSegmentIndex) {
+        case "Gold":
+            return .gold
+        case "Silver":
+            return .silver
+        default:
+            return .palladium
+        }
+    }
+    
 //    проверка корректности ввода в текстовые поля с цифрами
 //    проверка названия акции - нет ли уже такого
 
@@ -48,31 +116,31 @@ class AddFundViewController: UIViewController {
         case .stock:
             MockFundsContainer.shared.userFunds[.stock]?.append(
                 Stock(
-                    image: "person.circle",
+                    image: addedByUserIcon,
                     name: nameTF.text ?? "",
                     currency: getSelectedCurrency(),
                     price: Double(priceTF.text ?? "") ?? 0,
-                    quantity: Double(priceTF.text ?? "") ?? 0,
-                    issuer: "Added by user"
+                    quantity: Double(quantityTF.text ?? "") ?? 0,
+                    issuer: issuerTF.text ?? ""
                 )
             )
         case .bound:
             MockFundsContainer.shared.userFunds[.bound]?.append(
                 Bond(
-                    image: "person.circle",
+                    image: addedByUserIcon,
                     name: nameTF.text ?? "",
                     currency: getSelectedCurrency(),
                     price: Double(priceTF.text ?? "") ?? 0,
-                    quantity: Double(priceTF.text ?? "") ?? 0,
-                    issuer: "Added by user",
-                    yield: 0
+                    quantity: Double(quantityTF.text ?? "") ?? 0,
+                    issuer: issuerTF.text ?? "",
+                    yield: Double(yieldTF.text ?? "") ?? 0
                 )
             )
         case .metall:
             MockFundsContainer.shared.userFunds[.metall]?.append(
                 Metall(
-                    typeOfMetall: .gold, //надо как-то выбирать металл вместо валюты
-                    image: "person.circle",
+                    typeOfMetall: getSelectedMetall(),
+                    image: addedByUserIcon,
                     price: Double(priceTF.text ?? "") ?? 0,
                     quantity: Double(quantityTF.text ?? "") ?? 0
                 )
@@ -80,19 +148,19 @@ class AddFundViewController: UIViewController {
         case .cryptoCurrency:
             MockFundsContainer.shared.userFunds[.cryptoCurrency]?.append(
                 CryptoCurrency(
-                    image: "person.circle",
+                    image: addedByUserIcon,
                     name: nameTF.text ?? "",
                     price: Double(priceTF.text ?? "") ?? 0,
-                    quantity: Double(priceTF.text ?? "") ?? 0,
-                    ticker: nameTF.text ?? "" //как-то надо достать тикер
+                    quantity: Double(quantityTF.text ?? "") ?? 0,
+                    ticker: tickerTF.text ?? ""
                 )
             )
         default:
             MockFundsContainer.shared.userFunds[.cash]?.append(
                 Cash(
-                    image: "person.circle",
+                    image: addedByUserIcon,
                     currency: getSelectedCurrency(),
-                    quantity: Double(priceTF.text ?? "") ?? 0 // кэш надо как-то по-другому добавлять
+                    quantity: Double(quantityTF.text ?? "") ?? 0
                 )
             )
         }
