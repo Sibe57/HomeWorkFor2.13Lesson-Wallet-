@@ -15,19 +15,19 @@ class FundsOverviewViewController: UIViewController {
     @IBOutlet weak var toTestsImage: UIImageView!
     
     @IBOutlet weak var investingProfileLabel: UILabel!
-    var investingProfile: InvestingProfile?
+    private var investingProfile: InvestingProfile?
     
     private var histogrammShowing = false
     private var currencyForShowing: Currency = .rur
     
     private var costOfTypeOfFunds: [(TypeOfFunds, Double)]!
-    private var refToDb = MockFundsContainer.shared
+    private let refToDb = MockFundsContainer.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.backItem?.title = "Мои Активы"
-        navigationController?.navigationBar.backItem?.backButtonDisplayMode = .generic
+        setInvestingProfileLabel()
         setGistogrammImage()
         setToTestsImage()
     }
@@ -36,7 +36,6 @@ class FundsOverviewViewController: UIViewController {
         super.viewWillAppear(animated)
         setupFundsType()
         tableView.reloadData()
-        setInvestingProfileLabel()
         
     }
 
@@ -50,13 +49,17 @@ class FundsOverviewViewController: UIViewController {
     private func setInvestingProfileLabel() {
         switch investingProfile {
         case .agressive:
-            investingProfileLabel.text = "Агрессивный профиль"
+            investingProfileLabel.textColor = UIColor(named: "MainColor")
+            investingProfileLabel.text = "Цель - Агрессивный"
         case .middle:
-            investingProfileLabel.text = "Сбалансированный профиль"
+            investingProfileLabel.textColor = UIColor(named: "MainColor")
+            investingProfileLabel.text = "Цель - Сбалансированный"
         case .conservative:
-            investingProfileLabel.text = "Консервативный профиль"
+            investingProfileLabel.textColor = UIColor(named: "MainColor")
+            investingProfileLabel.text = "Цель - Консервативный"
         case .none:
-            investingProfileLabel.text = "Узнать инвестиционный профиль"
+            investingProfileLabel.textColor = .secondaryLabel
+            investingProfileLabel.text = "Узнать инвест-профиль:"
         }
     }
     
@@ -87,26 +90,22 @@ class FundsOverviewViewController: UIViewController {
     }
     
     @objc private func showGistogramm() {
-        
         pieChartImage.transform = CGAffineTransform(rotationAngle: Double.pi)
         
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.45, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.45,
+                       initialSpringVelocity: 5, options: .curveEaseOut) {
             self.pieChartImage.transform = CGAffineTransform(rotationAngle: Double.pi)
             self.pieChartImage.transform = .identity
             self.pieChartImage.image = self.histogrammShowing
             ? UIImage(systemName: "chart.pie")
             : UIImage(systemName: "chart.pie.fill")
-        }) { _ in
         }
         
         tableView.reloadData()
         histogrammShowing.toggle()
-
     }
     
-    
     private func setupFundsType() {
-        
         costOfTypeOfFunds = []
         for (fundsType, _) in refToDb.userFunds {
             costOfTypeOfFunds.append((fundsType,
@@ -114,6 +113,13 @@ class FundsOverviewViewController: UIViewController {
                                                             in: currencyForShowing)))
         }
         costOfTypeOfFunds.sort { $0.0 < $1.0 }
+    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let testVC = segue.source as? TestsViewController else { return }
+        investingProfile = testVC.investingProfile
+        setInvestingProfileLabel()
+        tableView.reloadData()
     }
 }
 
@@ -145,18 +151,27 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
             cell.totalCostLabel.text = Converter.getText(from: fundsInfo.1,
                                                          with: currencyForShowing)
             
-            let percentage = (fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)) * 100
-            cell.fundsPercent.text = String(format: "%.1f", percentage) + "%"
-            
-          
+            let percentage = fundsInfo.1 / refToDb.getTotalPrice(in: currencyForShowing)
+            cell.fundsPercent.text = String(format: "%.1f", percentage * 100) + "%"
             
             if histogrammShowing {
-                cell.setProgressView(
-                    on: fundsInfo.1 / refToDb.getTotalPrice(
-                        in: currencyForShowing
-                    )
-                )
+                cell.setProgressView(on: percentage)
             }
+            
+            var recomendation: Recomendation? = nil
+            let targetBalance = investingProfile?.getTargetBalance()[fundsInfo.0]
+            if let targetBalance = targetBalance {
+                print(102938)
+                if targetBalance.contains(percentage) {
+                    recomendation = .perfect
+                } else if percentage < targetBalance.lowerBound {
+                    recomendation = .lessThan
+                } else {
+                    recomendation = .moreThan
+                }
+            }
+            
+            cell.setRecomendationCircle(recomendation: recomendation)
             cell.selectionStyle = .none
             cell.setNeedsUpdateConfiguration()
             return cell

@@ -12,6 +12,9 @@ class FundsTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var fundsPercent: UILabel!
     @IBOutlet weak var fundsTypeLabel: UILabel!
     @IBOutlet weak var totalCostLabel: UILabel!
+    
+    @IBOutlet weak var recomendationCircle: UIImageView!
+    
     var progressView: UIView = UIView()
     
     override func awakeFromNib() {
@@ -32,7 +35,7 @@ class FundsTypeTableViewCell: UITableViewCell {
                 height: contentView.layer.bounds.height - 4)
         ))
         
-        progressView.backgroundColor = .blue
+        progressView.backgroundColor = UIColor(named: "MainColor")
         progressView.alpha = 0
         progressView.layer.cornerRadius = progressView.layer.bounds.width > 32
         ? 16
@@ -40,6 +43,22 @@ class FundsTypeTableViewCell: UITableViewCell {
         contentView.addSubview(progressView)
         UIView.animate(withDuration: 0.25) { [unowned self] in
             self.progressView.alpha = 0.2
+        }
+    }
+    
+    func setRecomendationCircle(recomendation: Recomendation?) {
+        switch recomendation {
+        case .moreThan:
+            recomendationCircle.image = UIImage(systemName: "arrow.down.circle")
+            recomendationCircle.tintColor = .systemOrange
+        case .lessThan:
+            recomendationCircle.image = UIImage(systemName: "arrow.up.circle")
+            recomendationCircle.tintColor = .systemOrange
+        case .perfect:
+            recomendationCircle.image = UIImage(systemName: "checkmark.circle")
+            recomendationCircle.tintColor = .systemGreen
+        case .none:
+            recomendationCircle.image = nil
         }
     }
 }

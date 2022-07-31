@@ -21,12 +21,14 @@ class TestsViewController: UIViewController {
     
     @IBOutlet weak var resultBalanceLabel: UILabel!
     
+    @IBOutlet weak var okButton: UIButton!
+    
     private var questions: [Question]!
     private var answers: [(String, Int)] = []
     
     private var currentQuestion = 0
     private var investorProfileValue = 0
-    private var investingProfile: InvestingProfile!
+    var investingProfile: InvestingProfile!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,7 @@ class TestsViewController: UIViewController {
         setQuestion(number: currentQuestion)
         setQustionCounter()
         resultBalanceLabel.isHidden = true
+        okButton.isHidden = true
     }
     
     @IBAction func answerButtonTapped(_ sender: UIButton) {
@@ -112,6 +115,8 @@ class TestsViewController: UIViewController {
     }
     
     private func showResult() {
+        okButton.alpha = 0
+        okButton.isHidden = false
         resultBalanceLabel.alpha = 0
         resultBalanceLabel.isHidden = false
         resultBalanceLabel.text = """
@@ -128,6 +133,7 @@ class TestsViewController: UIViewController {
             self.questionCounter.alpha = 1
             self.questionLabel.alpha = 1
             self.resultBalanceLabel.alpha = 1
+            self.okButton.alpha = 1
         }
         
     }
