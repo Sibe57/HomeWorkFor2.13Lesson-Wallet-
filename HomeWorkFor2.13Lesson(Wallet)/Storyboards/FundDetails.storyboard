@@ -3,6 +3,7 @@
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -85,18 +86,20 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Funds details" largeTitleDisplayMode="always" id="edg-hw-Rjk">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="iV3-Et-vgx">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qrM-v4-5ua">
-                                <rect key="frame" x="20" y="9.5" width="374" height="35"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="iV3-Et-vgx">
+                            <button key="customView" opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qrM-v4-5ua">
+                                <rect key="frame" x="20" y="9.5" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="MainColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="+"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="+" titleAlignment="center"/>
                                 <connections>
                                     <segue destination="eja-Pw-nNE" kind="popoverPresentation" identifier="addFund" popoverAnchorView="qrM-v4-5ua" id="cDE-DB-Qax">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
+                            <color key="tintColor" name="MainColor"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -174,8 +177,9 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaT-hj-bhR">
                                 <rect key="frame" x="116" y="459" width="88.5" height="31"/>
+                                <color key="tintColor" name="MainColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Добавить"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Добавить"/>
                                 <connections>
                                     <action selector="addFundButtonPressed" destination="eja-Pw-nNE" eventType="touchUpInside" id="Q4O-Ld-AwG"/>
                                 </connections>
@@ -184,7 +188,7 @@
                                 <rect key="frame" x="122" y="498" width="76" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Отмена">
-                                    <color key="baseForegroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="Rlc-rT-1eL" kind="unwind" identifier="manualUnwind" unwindAction="unwindFor:" id="qvP-6a-CRo"/>
@@ -213,7 +217,6 @@
                         <outlet property="tickerTF" destination="2FK-Sx-eSg" id="VXM-3p-dgt"/>
                         <outlet property="titleLabel" destination="MRR-ux-Tkx" id="7aQ-fl-aHk"/>
                         <outlet property="yieldTF" destination="1mX-Hj-Cwo" id="bD7-I1-WMW"/>
-                        <segue destination="Rlc-rT-1eL" kind="unwind" unwindAction="unwindFor:" id="g6c-9k-1zE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCJ-iH-SKP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,6 +227,9 @@
     </scenes>
     <resources>
         <image name="applelogo" catalog="system" width="103" height="128"/>
+        <namedColor name="MainColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -232,6 +238,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
