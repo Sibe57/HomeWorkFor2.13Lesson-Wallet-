@@ -405,14 +405,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="О нас:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-J9-t3J">
-                                <rect key="frame" x="163.5" y="64" width="87" height="37"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Над приложением работали:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-J9-t3J">
+                                <rect key="frame" x="16" y="92" width="382" height="81.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IlyaKozhevnikov" translatesAutoresizingMaskIntoConstraints="NO" id="K2w-Yy-Bsw">
-                                <rect key="frame" x="16" y="309.5" width="92" height="92"/>
+                                <rect key="frame" x="16" y="333.5" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="K2w-Yy-Bsw" secondAttribute="height" multiplier="1:1" id="ONm-sb-SXC"/>
                                     <constraint firstAttribute="width" constant="92" id="a6r-B1-ukj"/>
@@ -424,7 +424,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FedorEronin" translatesAutoresizingMaskIntoConstraints="NO" id="npl-KX-U8p">
-                                <rect key="frame" x="16" y="209.5" width="92" height="92"/>
+                                <rect key="frame" x="16" y="233.5" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="npl-KX-U8p" secondAttribute="height" multiplier="1:1" id="Cjf-Sj-gAl"/>
                                     <constraint firstAttribute="width" constant="92" id="i5n-bc-AjQ"/>
@@ -436,7 +436,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mba-mt-fLX">
-                                <rect key="frame" x="116" y="333" width="173.5" height="45.5"/>
+                                <rect key="frame" x="116" y="357" width="173.5" height="45.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Илья Кожевников" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAG-Tb-sHX">
                                         <rect key="frame" x="0.0" y="0.0" width="156" height="23"/>
@@ -453,7 +453,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rqg-fW-oUf">
-                                <rect key="frame" x="116" y="233" width="145.5" height="45.5"/>
+                                <rect key="frame" x="116" y="257" width="145.5" height="45.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Федор Еронин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzC-I0-JAp">
                                         <rect key="frame" x="0.0" y="0.0" width="129.5" height="23"/>
@@ -469,33 +469,36 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Над приложение Invest Wallet работали:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U9-EM-PSo">
-                                <rect key="frame" x="16" y="145" width="382" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDb-gr-bmr">
+                                <rect key="frame" x="163.5" y="771" width="87" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Спасибо!"/>
+                                <connections>
+                                    <segue destination="4jd-TU-NL5" kind="unwind" unwindAction="unwindFor:" id="f6N-gr-1pP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1bC-4Y-sN0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="P0h-J9-t3J" firstAttribute="centerX" secondItem="6j3-9b-2Dm" secondAttribute="centerX" id="4MB-r8-vqX"/>
-                            <constraint firstItem="0U9-EM-PSo" firstAttribute="top" secondItem="P0h-J9-t3J" secondAttribute="bottom" constant="44" id="7GA-S0-XCi"/>
+                            <constraint firstItem="1bC-4Y-sN0" firstAttribute="bottom" secondItem="sDb-gr-bmr" secondAttribute="bottom" constant="40" id="5AR-NL-GHT"/>
                             <constraint firstItem="K2w-Yy-Bsw" firstAttribute="leading" secondItem="1bC-4Y-sN0" secondAttribute="leading" constant="16" id="7Px-bR-76W"/>
-                            <constraint firstItem="1bC-4Y-sN0" firstAttribute="trailing" secondItem="0U9-EM-PSo" secondAttribute="trailing" constant="16" id="FdS-ct-oBB"/>
-                            <constraint firstItem="P0h-J9-t3J" firstAttribute="top" secondItem="1bC-4Y-sN0" secondAttribute="top" constant="20" id="I3v-Ee-bQQ"/>
-                            <constraint firstItem="npl-KX-U8p" firstAttribute="top" secondItem="0U9-EM-PSo" secondAttribute="bottom" constant="44" id="MPo-NF-uWm"/>
+                            <constraint firstItem="npl-KX-U8p" firstAttribute="top" secondItem="P0h-J9-t3J" secondAttribute="bottom" constant="60" id="ELN-tP-N3v"/>
+                            <constraint firstItem="P0h-J9-t3J" firstAttribute="top" secondItem="1bC-4Y-sN0" secondAttribute="top" constant="48" id="I3v-Ee-bQQ"/>
                             <constraint firstItem="Mba-mt-fLX" firstAttribute="centerY" secondItem="K2w-Yy-Bsw" secondAttribute="centerY" id="MnW-ob-gQt"/>
                             <constraint firstItem="Mba-mt-fLX" firstAttribute="leading" secondItem="K2w-Yy-Bsw" secondAttribute="trailing" constant="8" id="QqI-vN-IPn"/>
+                            <constraint firstAttribute="trailing" secondItem="P0h-J9-t3J" secondAttribute="trailing" constant="16" id="TwR-Yq-b0k"/>
                             <constraint firstItem="Rqg-fW-oUf" firstAttribute="centerY" secondItem="npl-KX-U8p" secondAttribute="centerY" id="W0D-yc-hsv"/>
+                            <constraint firstItem="sDb-gr-bmr" firstAttribute="centerX" secondItem="6j3-9b-2Dm" secondAttribute="centerX" id="cJM-ZG-shI"/>
                             <constraint firstItem="Rqg-fW-oUf" firstAttribute="leading" secondItem="npl-KX-U8p" secondAttribute="trailing" constant="8" id="dGd-mZ-XIv"/>
-                            <constraint firstItem="0U9-EM-PSo" firstAttribute="leading" secondItem="1bC-4Y-sN0" secondAttribute="leading" constant="16" id="l7d-nX-ws1"/>
                             <constraint firstItem="K2w-Yy-Bsw" firstAttribute="top" secondItem="npl-KX-U8p" secondAttribute="bottom" constant="8" symbolic="YES" id="oZh-gK-vZP"/>
                             <constraint firstItem="npl-KX-U8p" firstAttribute="leading" secondItem="1bC-4Y-sN0" secondAttribute="leading" constant="16" id="prm-S9-8Ce"/>
+                            <constraint firstItem="P0h-J9-t3J" firstAttribute="leading" secondItem="1bC-4Y-sN0" secondAttribute="leading" constant="16" id="vtY-td-oQ3"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9y-ts-mHm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="4jd-TU-NL5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1709" y="476"/>
         </scene>
