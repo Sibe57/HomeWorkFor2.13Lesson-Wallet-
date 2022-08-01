@@ -18,13 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вопрос 1 / 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TV-67-6NW">
-                                <rect key="frame" x="123.5" y="64" width="167" height="37"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <rect key="frame" x="16" y="84" width="204.5" height="41"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Я планирую вывести капитал из инвестиционного портфеля через:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQq-dG-9zQ">
-                                <rect key="frame" x="16" y="141" width="382" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQq-dG-9zQ">
+                                <rect key="frame" x="16" y="165" width="382" height="119"/>
+                                <string key="text">Пройдите тест и узнайте подходящий именно вам профиль инвестирования. После его прохождения мы будем показывать вам следующие подсказки по балансу активов:</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -147,12 +148,83 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moa-6P-8RR">
-                                <rect key="frame" x="123" y="380.5" width="168" height="31"/>
+                                <rect key="frame" x="123" y="771" width="168" height="31"/>
                                 <color key="tintColor" name="MainColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Запомнить Результат"/>
                                 <connections>
                                     <segue destination="jTx-AE-dE5" kind="unwind" unwindAction="unwindFor:" id="8Tu-Qr-7Yn"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="bfT-Rs-xCg">
+                                <rect key="frame" x="36" y="324" width="273" height="108"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="I6A-TL-i9J">
+                                        <rect key="frame" x="0.0" y="0.0" width="273" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3LR-30-1o7">
+                                                <rect key="frame" x="0.0" y="0.5" width="32" height="31"/>
+                                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="0wQ-IA-aNT"/>
+                                                    <constraint firstAttribute="width" constant="32" id="3Ft-MZ-Zvx"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рекомендуем повысить долю" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmd-Tz-kQL">
+                                                <rect key="frame" x="36" y="0.0" width="237" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-lO-AXF">
+                                        <rect key="frame" x="0.0" y="38" width="206" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HEV-Hf-7JG">
+                                                <rect key="frame" x="0.0" y="0.5" width="32" height="31"/>
+                                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="odp-sQ-paq"/>
+                                                    <constraint firstAttribute="width" constant="32" id="xvE-NP-cLL"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рекомендуемая доля" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeA-VJ-FUh">
+                                                <rect key="frame" x="36" y="0.0" width="170" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Tk3-Xg-eZE">
+                                        <rect key="frame" x="0.0" y="76" width="271" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-U7-h73">
+                                                <rect key="frame" x="0.0" y="0.5" width="32" height="31"/>
+                                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Ljj-kR-xJk"/>
+                                                    <constraint firstAttribute="width" constant="32" id="rhf-PY-Jj7"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рекомендуем понизить долю" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dr0-ih-A27">
+                                                <rect key="frame" x="36" y="0.0" width="235" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymV-gL-lnO">
+                                <rect key="frame" x="153.5" y="771" width="107.5" height="31"/>
+                                <color key="tintColor" name="MainColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Пройти тест"/>
+                                <connections>
+                                    <action selector="toTestTapped:" destination="aVG-G4-c6Z" eventType="touchUpInside" id="WEe-PA-QST"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -161,29 +233,36 @@
                         <color key="tintColor" systemColor="systemGrayColor"/>
                         <constraints>
                             <constraint firstItem="uQq-dG-9zQ" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="16" id="0Bc-gb-iij"/>
-                            <constraint firstItem="4TV-67-6NW" firstAttribute="top" secondItem="6Pt-wU-bnR" secondAttribute="top" constant="20" id="2X4-Xz-GYO"/>
+                            <constraint firstItem="4TV-67-6NW" firstAttribute="top" secondItem="6Pt-wU-bnR" secondAttribute="top" constant="40" id="2X4-Xz-GYO"/>
+                            <constraint firstItem="ymV-gL-lnO" firstAttribute="bottom" secondItem="6Pt-wU-bnR" secondAttribute="bottom" constant="-40" id="8Gk-sR-PHU"/>
                             <constraint firstItem="gmT-Gg-gqt" firstAttribute="top" secondItem="6Pt-wU-bnR" secondAttribute="top" constant="300" id="A60-aT-rkE"/>
-                            <constraint firstItem="moa-6P-8RR" firstAttribute="top" secondItem="gmT-Gg-gqt" secondAttribute="bottom" constant="16" id="Gd2-xV-gp3"/>
+                            <constraint firstItem="ymV-gL-lnO" firstAttribute="centerX" secondItem="RYs-A6-UdB" secondAttribute="centerX" id="DDy-f3-uoz"/>
+                            <constraint firstItem="moa-6P-8RR" firstAttribute="bottom" secondItem="6Pt-wU-bnR" secondAttribute="bottom" constant="-40" id="Gd2-xV-gp3"/>
+                            <constraint firstItem="bfT-Rs-xCg" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="36" id="Lhm-SJ-Hz3"/>
                             <constraint firstItem="dkh-r7-UT0" firstAttribute="top" secondItem="6Pt-wU-bnR" secondAttribute="top" constant="300" id="PCu-yA-WxS"/>
-                            <constraint firstItem="4TV-67-6NW" firstAttribute="centerX" secondItem="RYs-A6-UdB" secondAttribute="centerX" id="X51-SM-ct8"/>
+                            <constraint firstItem="4TV-67-6NW" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="16" id="QU5-cc-qLi"/>
                             <constraint firstItem="uQq-dG-9zQ" firstAttribute="top" secondItem="4TV-67-6NW" secondAttribute="bottom" constant="40" id="cSj-MD-DUg"/>
                             <constraint firstItem="6Pt-wU-bnR" firstAttribute="trailing" secondItem="gmT-Gg-gqt" secondAttribute="trailing" constant="16" id="iai-iP-LqV"/>
                             <constraint firstItem="gmT-Gg-gqt" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="16" id="ipl-Ck-Szz"/>
                             <constraint firstAttribute="trailing" secondItem="uQq-dG-9zQ" secondAttribute="trailing" constant="16" id="vcU-pM-fi0"/>
+                            <constraint firstItem="bfT-Rs-xCg" firstAttribute="top" secondItem="uQq-dG-9zQ" secondAttribute="bottom" constant="40" id="vgK-Tl-zrB"/>
                             <constraint firstItem="moa-6P-8RR" firstAttribute="centerX" secondItem="RYs-A6-UdB" secondAttribute="centerX" id="xkA-4E-cET"/>
                             <constraint firstItem="6Pt-wU-bnR" firstAttribute="trailing" secondItem="dkh-r7-UT0" secondAttribute="trailing" constant="36" id="yxX-A9-y1X"/>
                             <constraint firstItem="dkh-r7-UT0" firstAttribute="leading" secondItem="6Pt-wU-bnR" secondAttribute="leading" constant="36" id="zVw-al-vgF"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="answersStackView" destination="dkh-r7-UT0" id="T1l-v0-yAx"/>
                         <outlet property="firstAnswerCheckBox" destination="FAn-ul-vQ8" id="EI7-d0-aYC"/>
                         <outlet property="fourthAnswerCheckBox" destination="gyF-9u-AZL" id="gQZ-GH-16k"/>
                         <outlet property="okButton" destination="moa-6P-8RR" id="Cn2-cz-N9T"/>
-                        <outlet property="questionCounter" destination="4TV-67-6NW" id="rkB-aw-Whh"/>
+                        <outlet property="promtStackView" destination="bfT-Rs-xCg" id="weW-C1-3Z1"/>
                         <outlet property="questionLabel" destination="uQq-dG-9zQ" id="Aag-tC-l5n"/>
                         <outlet property="resultBalanceLabel" destination="gmT-Gg-gqt" id="x6T-96-Ms1"/>
                         <outlet property="secondAnswerCheckBox" destination="9ZY-XM-JrS" id="hZ2-pB-GvH"/>
                         <outlet property="thirdAnswerCheckBox" destination="dBI-ZV-Jjw" id="7yt-BE-p4G"/>
+                        <outlet property="titleLabel" destination="4TV-67-6NW" id="rkB-aw-Whh"/>
+                        <outlet property="toTestsButton" destination="ymV-gL-lnO" id="SPO-sL-pVj"/>
                         <outletCollection property="answerLabels" destination="FzY-sL-W5h" collectionClass="NSMutableArray" id="Frv-VH-siy"/>
                         <outletCollection property="answerLabels" destination="ftq-Yq-LAe" collectionClass="NSMutableArray" id="eBr-69-iuh"/>
                         <outletCollection property="answerLabels" destination="yK6-g7-zTs" collectionClass="NSMutableArray" id="Bic-XW-lHa"/>
@@ -193,7 +272,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxj-1p-O6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="jTx-AE-dE5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="-373"/>
+            <point key="canvasLocation" x="1689.8550724637682" y="-373.66071428571428"/>
         </scene>
         <!--Мои Активы-->
         <scene sceneID="tne-QT-ifu">
@@ -525,12 +604,14 @@
     <resources>
         <image name="FedorEronin" width="1280" height="1280"/>
         <image name="IlyaKozhevnikov" width="640" height="640"/>
+        <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
+        <image name="arrow.up.circle" catalog="system" width="128" height="121"/>
         <image name="chart.pie" catalog="system" width="128" height="121"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="record.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="MainColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -543,6 +624,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

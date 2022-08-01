@@ -9,7 +9,7 @@ import UIKit
 
 class TestsViewController: UIViewController {
     
-    @IBOutlet weak var questionCounter: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var answerLabels: [UILabel]!
     
@@ -19,24 +19,28 @@ class TestsViewController: UIViewController {
     @IBOutlet weak var thirdAnswerCheckBox: UIButton!
     @IBOutlet weak var fourthAnswerCheckBox: UIButton!
     
+    @IBOutlet weak var answersStackView: UIStackView!
     @IBOutlet weak var resultBalanceLabel: UILabel!
     
+    @IBOutlet weak var toTestsButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
+    
+    @IBOutlet weak var promtStackView: UIStackView!
     
     private var questions: [Question]!
     private var answers: [(String, Int)] = []
     
-    private var currentQuestion = 0
+    private var currentQuestion = -1
     private var investorProfileValue = 0
     var investingProfile: InvestingProfile!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         questions = Question.getQuestions()
-        setQuestion(number: currentQuestion)
-        setQustionCounter()
+        setTitleLabel()
         resultBalanceLabel.isHidden = true
         okButton.isHidden = true
+        answersStackView.isHidden = true
     }
     
     @IBAction func answerButtonTapped(_ sender: UIButton) {
@@ -63,21 +67,45 @@ class TestsViewController: UIViewController {
         hideView(withReload: true)
     }
     
-    private func setQustionCounter() {
-        questionCounter.text = "Вопрос \(currentQuestion + 1) / \(questions.count)"
+    @IBAction func toTestTapped(_ sender: Any) {
+        currentQuestion += 1
+        UIView.animate(withDuration: 0.3) {
+            self.toTestsButton.alpha = 0
+            self.promtStackView.alpha = 0
+            self.titleLabel.alpha = 0
+            self.questionLabel.alpha = 0
+
+        } completion: { _ in
+            self.answersStackView.alpha = 0
+            self.answersStackView.isHidden = false
+            self.toTestsButton.isHidden = true
+            self.toTestsButton.isHidden = true
+            self.setTitleLabel()
+            self.setQuestion(number: self.currentQuestion)
+            
+            
+            UIView.animate(withDuration: 0.3) {
+                self.titleLabel.alpha = 1
+                self.questionLabel.alpha = 1
+                self.answersStackView.alpha = 1
+            }
+        }
+    }
+    
+    
+    private func setTitleLabel() {
+        if currentQuestion == -1 {
+            titleLabel.text = "Инвест-профиль"
+        } else {
+            titleLabel.text = "Вопрос \(currentQuestion + 1) / \(questions.count)"
+        }
     }
     
     private func hideView(withReload: Bool) {
         UIView.animate(withDuration: 0.3) {
-            self.questionCounter.alpha = 0
+            self.titleLabel.alpha = 0
             self.questionLabel.alpha = 0
-            for label in self.answerLabels {
-                label.alpha = 0
-            }
-            self.firstAnswerCheckBox.alpha = 0
-            self.secondAnswerCheckBox.alpha = 0
-            self.thirdAnswerCheckBox.alpha = 0
-            self.fourthAnswerCheckBox.alpha = 0
+            self.answersStackView.alpha = 0
         } completion: { _ in
             
             if withReload {
@@ -89,16 +117,10 @@ class TestsViewController: UIViewController {
     private func showView() {
         UIView.animate(withDuration: 0.3) {
             self.setQuestion(number: self.currentQuestion)
-            self.setQustionCounter()
-            self.questionCounter.alpha = 1
+            self.setTitleLabel()
+            self.titleLabel.alpha = 1
             self.questionLabel.alpha = 1
-            for label in self.answerLabels {
-                label.alpha = 1
-            }
-            self.firstAnswerCheckBox.alpha = 1
-            self.secondAnswerCheckBox.alpha = 1
-            self.thirdAnswerCheckBox.alpha = 1
-            self.fourthAnswerCheckBox.alpha = 1
+            self.answersStackView.alpha = 1
         }
     }
     
@@ -126,9 +148,9 @@ class TestsViewController: UIViewController {
 Криптовалюта: \(getTargetString(for: .cryptoCurrency))
 """
         UIView.animate(withDuration: 0.3, delay: 0.4) {
-            self.questionCounter.text = "Ваш результат:"
+            self.titleLabel.text = "Ваш результат:"
             self.questionLabel.text = self.investingProfile.getDescription()
-            self.questionCounter.alpha = 1
+            self.titleLabel.alpha = 1
             self.questionLabel.alpha = 1
             self.resultBalanceLabel.alpha = 1
             self.okButton.alpha = 1
