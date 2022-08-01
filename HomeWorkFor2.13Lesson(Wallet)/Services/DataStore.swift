@@ -57,11 +57,11 @@ class DataStore {
     let bondQuantities: [Double] = [91, 4, 5, 7, 12, 1]
     
 //    mock data for cash
-    let cashCurrencies: [Currency] = [.rur, .cny, .jpy]
+    let cashCurrencies: [Currency] = [.rur, .cny, .jpy, .eur, .usd]
     
-    let cashImages = ["Рубль", "Юань", "Йена"]
+    let cashImages = ["rublesign.circle", "yensign.circle", "yensign.circle", "eurosign.circle", "dollarsign.circle"]
     
-    let cashQuantities = [57435.32, 7015.54, 15063.73]
+    let cashQuantities = [57435.32, 7015.54, 15063.73, 1, 1]
     
 // mock data for crypto
     let cryptoNames = ["Bitcoin", "Ether", "Solana", "ThetherUSD", "Dogecoin"]
@@ -75,10 +75,10 @@ class DataStore {
     let cryptoTickers = ["BTC", "ETH", "SOL", "TUSD", "DOGE"]
     
 // mock data for metalls
-    let metallTypes: [TypeOfMetall] = [.gold, .silver]
-    let metalImages = [TypeOfMetall.gold.rawValue, TypeOfMetall.silver.rawValue]
-    let metalPrices = [39.53, 0.53]
-    let metalQantities = [100, 367.57]
+    let metallTypes: [TypeOfMetall] = [.gold, .silver, .palladium]
+    let metalImages = ["g.circle", "s.circle", "p.circle"]
+    let metalPrices = [39.53, 0.53, 100]
+    let metalQantities = [100, 367.57, 1]
     
     private init() {}
 }
