@@ -19,6 +19,7 @@ class FundDetailsViewController: UITableViewController {
         
         title = typeOfFunds.rawValue
         
+        
         funds = Fund.getAllFunds(of: typeOfFunds)
         
     }
