@@ -87,7 +87,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Funds details" largeTitleDisplayMode="always" id="edg-hw-Rjk">
                         <barButtonItem key="rightBarButtonItem" style="done" id="iV3-Et-vgx">
-                            <button key="customView" opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qrM-v4-5ua">
+                            <button key="customView" opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qrM-v4-5ua">
                                 <rect key="frame" x="20" y="9.5" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="MainColor"/>
