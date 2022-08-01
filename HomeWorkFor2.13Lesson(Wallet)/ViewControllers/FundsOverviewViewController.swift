@@ -25,7 +25,6 @@ class FundsOverviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.navigationBar.backItem?.title = "Мои Активы"
         setInvestingProfileLabel()
         setGistogrammImage()
@@ -36,7 +35,6 @@ class FundsOverviewViewController: UIViewController {
         super.viewWillAppear(animated)
         setupFundsType()
         tableView.reloadData()
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,7 +121,6 @@ class FundsOverviewViewController: UIViewController {
         tableView.reloadData()
     }
 }
-
 
 extension FundsOverviewViewController: UITableViewDataSource {
     
