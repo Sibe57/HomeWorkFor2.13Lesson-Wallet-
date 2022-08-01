@@ -13,7 +13,6 @@ class TestsViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var answerLabels: [UILabel]!
     
-    
     @IBOutlet weak var firstAnswerCheckBox: UIButton!
     @IBOutlet weak var secondAnswerCheckBox: UIButton!
     @IBOutlet weak var thirdAnswerCheckBox: UIButton!
@@ -59,7 +58,9 @@ class TestsViewController: UIViewController {
         currentQuestion += 1
         guard questions.count > currentQuestion
         else {
-            investingProfile = InvestingProfile.setFromValue(investorProfileValue: investorProfileValue)
+            investingProfile = InvestingProfile.setFromValue(
+                investorProfileValue: investorProfileValue
+            )
             hideView(withReload: false)
             showResult()
             return
@@ -91,7 +92,6 @@ class TestsViewController: UIViewController {
             }
         }
     }
-    
     
     private func setTitleLabel() {
         if currentQuestion == -1 {
