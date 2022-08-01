@@ -178,7 +178,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Добавить"/>
                                 <connections>
                                     <action selector="addFundButtonPressed" destination="eja-Pw-nNE" eventType="touchUpInside" id="Q4O-Ld-AwG"/>
-                                    <segue destination="Rlc-rT-1eL" kind="unwind" unwindAction="unwindFor:" id="JwH-zF-ejI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fx-zZ-6SO">
@@ -188,7 +187,7 @@
                                     <color key="baseForegroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Rlc-rT-1eL" kind="unwind" unwindAction="unwindFor:" id="qvP-6a-CRo"/>
+                                    <segue destination="Rlc-rT-1eL" kind="unwind" identifier="manualUnwind" unwindAction="unwindFor:" id="qvP-6a-CRo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -214,6 +213,7 @@
                         <outlet property="tickerTF" destination="2FK-Sx-eSg" id="VXM-3p-dgt"/>
                         <outlet property="titleLabel" destination="MRR-ux-Tkx" id="7aQ-fl-aHk"/>
                         <outlet property="yieldTF" destination="1mX-Hj-Cwo" id="bD7-I1-WMW"/>
+                        <segue destination="Rlc-rT-1eL" kind="unwind" unwindAction="unwindFor:" id="g6c-9k-1zE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCJ-iH-SKP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
