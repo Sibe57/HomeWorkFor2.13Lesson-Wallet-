@@ -44,6 +44,13 @@ class FundsOverviewViewController: UIViewController {
         detailVC.typeOfFunds = costOfTypeOfFunds[index.row].0
     }
     
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let testVC = segue.source as? TestsViewController else { return }
+        investingProfile = testVC.investingProfile
+        setInvestingProfileLabel()
+        tableView.reloadData()
+    }
+    
     private func setInvestingProfileLabel() {
         switch investingProfile {
         case .agressive:
@@ -112,13 +119,6 @@ class FundsOverviewViewController: UIViewController {
                                                             in: currencyForShowing)))
         }
         costOfTypeOfFunds.sort { $0.0 < $1.0 }
-    }
-    
-    @IBAction func unwind(for segue: UIStoryboardSegue) {
-        guard let testVC = segue.source as? TestsViewController else { return }
-        investingProfile = testVC.investingProfile
-        setInvestingProfileLabel()
-        tableView.reloadData()
     }
 }
 
