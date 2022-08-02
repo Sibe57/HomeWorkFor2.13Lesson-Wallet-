@@ -25,7 +25,6 @@ class FundsOverviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.navigationBar.backItem?.title = "Мои Активы"
         setInvestingProfileLabel()
         setGistogrammImage()
@@ -36,7 +35,6 @@ class FundsOverviewViewController: UIViewController {
         super.viewWillAppear(animated)
         setupFundsType()
         tableView.reloadData()
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,7 +65,6 @@ class FundsOverviewViewController: UIViewController {
         let pieChartTapped = UITapGestureRecognizer(target: self,
                                              action: #selector(showGistogramm))
         
-        
         pieChartImage.isUserInteractionEnabled = true
         pieChartImage.addGestureRecognizer(pieChartTapped)
     }
@@ -82,7 +79,9 @@ class FundsOverviewViewController: UIViewController {
     @objc private func openTests() {
         toTestsImage.transform = CGAffineTransform(rotationAngle: 0.3)
         
-        UIImageView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0) {
+        UIImageView.animate(withDuration: 1, delay: 0,
+                            usingSpringWithDamping: 0.3,
+                            initialSpringVelocity: 0) {
             self.toTestsImage.transform = .identity
         }
         
@@ -123,8 +122,7 @@ class FundsOverviewViewController: UIViewController {
     }
 }
 
-
-extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegate {
+extension FundsOverviewViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         2
@@ -187,7 +185,9 @@ extension FundsOverviewViewController: UITableViewDataSource, UITableViewDelegat
             return cell
         }
     }
-    
+}
+
+extension FundsOverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
